@@ -1,0 +1,21 @@
+#avatar {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 1.5;
+}
+
+#avatar path,
+#avatar rect {
+  fill: #ebebeb;
+  fill-opacity: 0;
+  stroke: #ebebeb;
+  stroke-width: 3px;
+}
+#HeadOutline {
+  fill: #ebebeb;
+  fill-opacity: 0;
+  stroke: #ebebeb;
+  stroke-width: 3px;
+}
