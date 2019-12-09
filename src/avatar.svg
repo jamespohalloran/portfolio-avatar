@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 239 252" version="1.1" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <path id="HeadOutline" d="M187,1l-105,0l-37,38l0,47l-43,22l-0,12l12,11l32,0l0,97l37,20l105,-1l50,-63l0,-120l-50,-63Z" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;" />
+    <rect id="Mouth" x="65" y="212" width="67" height="8" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;" />
+    <rect id="EyeLeft" x="45" y="148" width="30" height="30" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;" />
+    <rect id="EyeRight" x="133" y="148" width="30" height="30" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;" />
+    <path id="ClawHoof" d="M137,47l-30,0l0,30l30,0l0,-30Z" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;" />    
+    <rect id="ClawTop" x="113" y="15" width="16" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;" />
+    <rect id="ClawRight" x="139" y="21" width="8" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;" />
+    <rect id="ClawLeft" x="96" y="21" width="8" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;" />
+</svg>
