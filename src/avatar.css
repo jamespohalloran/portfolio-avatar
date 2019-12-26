@@ -19,7 +19,8 @@
   stroke: #ebebeb;
   stroke-width: 3px;
 }
-#Speech,
-#Videogames {
+#Speech-ref,
+#Videogames-ref,
+#Head-ref {
   visibility: hidden;
 }
