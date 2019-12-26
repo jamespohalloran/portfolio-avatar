@@ -11,7 +11,7 @@
       <rect class="ClawLeft" data-hidden="true" x="96.5" y="21.543" width="8" height="20" />
     </g>
   <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l37,-18.031l0,-190l-37,-38.043Z" />
-  <path d="M223.986,84.379l-43.657,22.303l-0.458,12.379l11.788,10.702l32.017,0.858" style="fill:none;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
+  <path class="Arm" d="M223.986,84.379l-43.657,22.303l-0.458,12.379l11.788,10.702l32.017,0.858" style="fill:none;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
   </g>
   <g id="Speech-ref">
     <rect class="Mouth" data-hidden="true" x="65.5" y="212.543" width="67" height="8" />
@@ -24,6 +24,7 @@
       <rect class="ClawLeft" data-hidden="true" x="96.5" y="21.543" width="8" height="20" />
     </g>
     <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l50,-63.031l0,-120l-50,-63.043Z" />
+    <path class="Arm" data-hidden="true" d="M223.986,84.379l-43.657,22.303l-0.458,12.379l11.788,10.702l32.017,0.858" style="fill:none;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
   </g>
   <g id="Head-ref">
     <rect class="Mouth" x="65.5" y="212.543" width="67" height="8" />
@@ -36,6 +37,7 @@
       <rect class="ClawLeft" x="96.5" y="21.543" width="8" height="20" />
     </g>
     <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l50,-63.031l0,-120l-50,-63.043Z" />
+    <path class="Arm" data-hidden="true" d="M223.986,84.379l-43.657,22.303l-0.458,12.379l11.788,10.702l32.017,0.858" style="fill:none;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
   </g>
   <g id="Head">
     <rect class="Mouth" x="65.5" y="212.543" width="67" height="8" />
@@ -48,5 +50,6 @@
       <rect class="ClawLeft" x="96.5" y="21.543" width="8" height="20" />
     </g>
     <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l50,-63.031l0,-120l-50,-63.043Z" />
+    <path class="Arm" style="transform: scale(0);" d="M223.986,84.379l-43.657,22.303l-0.458,12.379l11.788,10.702l32.017,0.858"/>
   </g>
 </svg>
