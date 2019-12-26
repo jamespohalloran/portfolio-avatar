@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./avatar.css";
 import { ReactComponent as Avatar } from "./Self_multidimensional.svg";
@@ -8,6 +8,7 @@ type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
   id: AVATAR_STATE_ID;
   rot: number;
+  effects?: () => void;
 }
 
 const AVATAR_STATES: AvatarState[] = [
@@ -21,7 +22,18 @@ const AVATAR_STATES: AvatarState[] = [
   },
   {
     id: "Videogames-ref",
-    rot: -180
+    rot: -180,
+    effects: () => {
+      const arm = document.querySelector(`#Head .Arm`);
+      anime({
+        targets: [arm],
+        d: "M224,84l-43,52l-0,12l12,10l32,-20",
+        duration: 600,
+        loop: true,
+        direction: "alternate",
+        easing: "linear"
+      });
+    }
   }
 ];
 
@@ -38,6 +50,9 @@ const rotateTo = (state: AvatarState) => {
     `#${state.id} rect, #${state.id} path`
   );
 
+  if (state.effects) {
+    state.effects();
+  }
   rectElements.forEach(path => {
     const className = path.classList[0];
 
@@ -47,24 +62,25 @@ const rotateTo = (state: AvatarState) => {
       x: parseInt(path.getAttribute("x") || "0"),
       y: parseInt(path.getAttribute("y") || "0"),
       d: path.getAttribute("d"),
-      scale: path.getAttribute("data-hidden") == "true" ? 0 : 1
+      scale: path.getAttribute("data-hidden") == "true" ? 0 : 1,
+      duration: 400,
+      easing: "easeInQuad",
+      backgroundColor: [
+        { value: "#FFF" } // Or #FFFFFF
+      ]
     });
   });
 };
 
 const App: React.FC = () => {
+  const [avatarState, setAvatarState] = useState<AVATAR_STATE_ID>("Head-ref");
+
   useEffect(() => {
     face = document.getElementById("avatar") as any;
-
-    let index = 0;
-    setInterval(
-      () => {
-        rotateTo(AVATAR_STATES[++index % AVATAR_STATES.length]);
-      },
-      1500,
-      500
-    );
   }, []);
+  useEffect(() => {
+    rotateTo(AVATAR_STATES.filter(a => a.id == avatarState)[0]);
+  }, [avatarState]);
 
   return (
     <div className="App">
@@ -72,6 +88,30 @@ const App: React.FC = () => {
         <Avatar id="avatar" />
 
         <p>James Makes Stuff</p>
+
+        <div>
+          <a
+            onMouseOver={() => {
+              setAvatarState("Head-ref");
+            }}
+          >
+            About Me
+          </a>
+          <a
+            onMouseOver={() => {
+              setAvatarState("Speech-ref");
+            }}
+          >
+            Blog
+          </a>
+          <a
+            onMouseOver={() => {
+              setAvatarState("Videogames-ref");
+            }}
+          >
+            Projects
+          </a>
+        </div>
       </header>
     </div>
   );
