@@ -4,17 +4,6 @@ import "./avatar.css";
 import { ReactComponent as Avatar } from "./Self_multidimensional.svg";
 import anime from "animejs";
 
-// interface Shape {
-//   hoof: string;
-//   clawLeft: string;
-//   clawTop: string;
-//   clawRight: string;
-//   eyeLeft: string;
-//   eyeRight: string;
-//   mouth: string;
-//   outline: string;
-// }
-
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
   id: AVATAR_STATE_ID;
@@ -38,19 +27,6 @@ const AVATAR_STATES: AvatarState[] = [
 
 let face: Element;
 
-// const getShapes = (root: string): Shape => {
-//   return {
-//     hoof: document.querySelector(`#${root} .ClawHoof`) as any,
-//     clawLeft: document.querySelector(`#${root} .ClawLeft`) as any,
-//     clawTop: document.querySelector(`#${root} .ClawTop`) as any,
-//     clawRight: document.querySelector(`#${root} .ClawRight`) as any,
-//     eyeLeft: document.querySelector(`#${root} .EyeLeft`) as any,
-//     eyeRight: document.querySelector(`#${root} .EyeRight`) as any,
-//     mouth: document.querySelector(`#${root} .Mouth`) as any,
-//     outline: document.querySelector(`#${root} .HeadOutline`) as any
-//   };
-// };
-
 const rotateTo = (state: AvatarState) => {
   anime({
     targets: [face],
@@ -68,7 +44,8 @@ const rotateTo = (state: AvatarState) => {
     anime({
       targets: [rotatableRect],
       x: parseInt(rect.getAttribute("x") || "0"),
-      y: parseInt(rect.getAttribute("y") || "0")
+      y: parseInt(rect.getAttribute("y") || "0"),
+      scale: rect.getAttribute("data-hidden") == "true" ? 0 : 1
     });
   });
 };
@@ -76,10 +53,6 @@ const rotateTo = (state: AvatarState) => {
 const App: React.FC = () => {
   useEffect(() => {
     face = document.getElementById("avatar") as any;
-
-    // const outlinePath = document
-    //   .querySelector("#Videogames .HeadOutline")!
-    //   .getAttribute("d");
 
     let index = 0;
     setInterval(
