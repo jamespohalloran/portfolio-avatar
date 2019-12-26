@@ -34,30 +34,18 @@ const rotateTo = (state: AvatarState) => {
     duration: 2000
   });
 
-  const rectElements = document.querySelectorAll(`#${state.id} rect`);
+  const rectElements = document.querySelectorAll(
+    `#${state.id} rect, #${state.id} path`
+  );
 
-  rectElements.forEach(rect => {
-    const className = rect.classList[0];
+  rectElements.forEach(path => {
+    const className = path.classList[0];
 
     const rotatableRect = document.querySelector(`#Head .${className}`) as any;
     anime({
       targets: [rotatableRect],
-      x: parseInt(rect.getAttribute("x") || "0"),
-      y: parseInt(rect.getAttribute("y") || "0"),
-      scale: rect.getAttribute("data-hidden") == "true" ? 0 : 1
-    });
-  });
-
-  const pathElements = document.querySelectorAll(`#${state.id} path`);
-
-  pathElements.forEach(path => {
-    const className = path.classList[0];
-
-    console.log(`className ${className}`);
-
-    const rotatablePath = document.querySelector(`#Head .${className}`) as any;
-    anime({
-      targets: [rotatablePath],
+      x: parseInt(path.getAttribute("x") || "0"),
+      y: parseInt(path.getAttribute("y") || "0"),
       d: path.getAttribute("d"),
       scale: path.getAttribute("data-hidden") == "true" ? 0 : 1
     });
