@@ -19,3 +19,7 @@
   stroke: #ebebeb;
   stroke-width: 3px;
 }
+#Speech,
+#Videogames {
+  visibility: hidden;
+}

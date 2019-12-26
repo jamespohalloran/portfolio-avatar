@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="speech" width="100%" height="100%" viewBox="0 0 1280 800" version="1.1" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+  <path id="HeadOutline" d="M630,161.957l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l50,-63.031l0,-120l-50,-63.043Z" style=""/>
+  <rect id="Mouth" x="508" y="373" width="67" height="8" />
+  <rect id="EyeLeft" x="582" y="320" width="30" height="30" style=""/>
+  <rect id="EyeRight" x="582" y="260" width="30" height="30" style=""/>
+  <g id="RaptorLogo"><rect id="ClawHoof" x="582" y="200" width="30" height="30.021" style=""/>
+  <rect id="ClawTop" x="556" y="176" width="16" height="20" />
+  <rect id="ClawRight" x="582" y="182" width="8" height="20" />
+  <rect id="ClawLeft" x="539" y="182" width="8" height="20" /></g>
+</svg>
