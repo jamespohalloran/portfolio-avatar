@@ -8,14 +8,14 @@ import anime from "animejs";
 
 const App: React.FC = () => {
   useEffect(() => {
-    const face = document.getElementsByClassName("avatar") as any;
-    const hoof = document.getElementsByClassName("ClawHoof") as any;
-    const clawLeft = document.getElementsByClassName("ClawLeft") as any;
-    const clawTop = document.getElementsByClassName("ClawTop") as any;
-    const clawRight = document.getElementsByClassName("ClawRight") as any;
-    const eyeLeft = document.getElementsByClassName("EyeLeft") as any;
-    const eyeRight = document.getElementsByClassName("EyeRight") as any;
-    const mouth = document.getElementsByClassName("Mouth") as any;
+    const face = document.getElementById("avatar") as any;
+    const hoof = document.querySelector("#Head .ClawHoof") as any;
+    const clawLeft = document.querySelector("#Head .ClawLeft") as any;
+    const clawTop = document.querySelector("#Head .ClawTop") as any;
+    const clawRight = document.querySelector("#Head .ClawRight") as any;
+    const eyeLeft = document.querySelector("#Head .EyeLeft") as any;
+    const eyeRight = document.querySelector("#Head .EyeRight") as any;
+    const mouth = document.querySelector("#Head .Mouth") as any;
 
     // M137,47c-5,-5 -25,-5 -30,0c-5,5 -5,25 0,30c5,5 25,5 30,0c5,-5 5,-25 0,-30Z
     anime({

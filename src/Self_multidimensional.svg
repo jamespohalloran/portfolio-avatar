@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="100%" height="100%" viewBox="0 0 239 252" version="1.1" >
+<svg id="avatar" width="100%" height="100%" viewBox="0 0 239 252" version="1.1" >
   <g id="Videogames">
-    <rect class="Mouth" x="67.851" y="119.942" width="67" height="8" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
-    <rect class="EyeLeft" x="45.5" y="148.543" width="30" height="30" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
-    <rect class="EyeRight" x="133.5" y="148.543" width="30" height="30" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
+    <rect class="Mouth" x="67.851" y="119.942" width="67" height="8" />
+    <rect class="EyeLeft" x="45.5" y="148.543" width="30" height="30" />
+    <rect class="EyeRight" x="133.5" y="148.543" width="30" height="30" />
     <g class="RaptorLogo">
-      <rect class="ClawHoof" x="89.909" y="46.642" width="30" height="30.021" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
-      <rect class="ClawTop" x="113.5" y="15.543" width="16" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
-      <rect class="ClawRight" x="139.5" y="21.543" width="8" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
-      <rect class="ClawLeft" x="96.5" y="21.543" width="8" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
+      <rect class="ClawHoof" x="89.909" y="46.642" width="30" height="30" />
+      <rect class="ClawTop" x="113.5" y="15.543" width="16" height="20" />
+      <rect class="ClawRight" x="139.5" y="21.543" width="8" height="20" />
+      <rect class="ClawLeft" x="96.5" y="21.543" width="8" height="20" />
     </g>
-  <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l37,-18.031l0,-190l-37,-38.043Z" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
+  <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l37,-18.031l0,-190l-37,-38.043Z" />
   <path d="M223.986,84.379l-43.657,22.303l-0.458,12.379l11.788,10.702l32.017,0.858" style="fill:none;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
   </g>
   <g id="Speech">
-    <rect class="Mouth" x="65.5" y="212.543" width="67" height="8" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
-    <rect class="EyeLeft" x="132.5" y="109.543" width="30" height="30" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
-    <rect class="EyeRight" x="132.5" y="169.543" width="30" height="30" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
+    <rect class="Mouth" x="65.5" y="212.543" width="67" height="8" />
+    <rect class="EyeLeft" x="132.5" y="109.543" width="30" height="30" />
+    <rect class="EyeRight" x="132.5" y="169.543" width="30" height="30" />
     <g class="RaptorLogo" >
-      <rect class="ClawHoof" x="132.5" y="49.543" width="30" height="30.021" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
-      <rect class="ClawTop" x="113.5" y="15.543" width="16" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
-      <rect class="ClawRight" x="139.5" y="21.543" width="8" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
-      <rect class="ClawLeft" x="96.5" y="21.543" width="8" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
+      <rect class="ClawHoof" x="132.5" y="49.543" width="30" height="30" />
+      <rect class="ClawTop" x="113.5" y="15.543" width="16" height="20" />
+      <rect class="ClawRight" x="139.5" y="21.543" width="8" height="20" />
+      <rect class="ClawLeft" x="96.5" y="21.543" width="8" height="20" />
     </g>
-    <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l50,-63.031l0,-120l-50,-63.043Z" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
+    <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l50,-63.031l0,-120l-50,-63.043Z" />
   </g>
   <g id="Head">
-    <rect class="Mouth" x="65.5" y="212.543" width="67" height="8" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
-    <rect class="EyeLeft" x="45.5" y="148.543" width="30" height="30" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
-    <rect class="EyeRight" x="133.5" y="148.543" width="30" height="30" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
+    <rect class="Mouth" x="65.5" y="212.543" width="67" height="8" />
+    <rect class="EyeLeft" x="45.5" y="148.543" width="30" height="30" />
+    <rect class="EyeRight" x="133.5" y="148.543" width="30" height="30" />
     <g class="RaptorLogo" >
-      <rect class="ClawHoof" x="107.5" y="47.543" width="30" height="30.021" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
-      <rect class="ClawTop" x="113.5" y="15.543" width="16" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
-      <rect class="ClawRight" x="139.5" y="21.543" width="8" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
-      <rect class="ClawLeft" x="96.5" y="21.543" width="8" height="20" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
+      <rect class="ClawHoof" x="107.5" y="47.543" width="30" height="30" />
+      <rect class="ClawTop" x="113.5" y="15.543" width="16" height="20" />
+      <rect class="ClawRight" x="139.5" y="21.543" width="8" height="20" />
+      <rect class="ClawLeft" x="96.5" y="21.543" width="8" height="20" />
     </g>
-    <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l50,-63.031l0,-120l-50,-63.043Z" style="fill:#ebebeb;fill-opacity:0;stroke:#000;stroke-width:3px;"/>
+    <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l50,-63.031l0,-120l-50,-63.043Z" />
   </g>
 </svg>
