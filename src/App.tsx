@@ -16,11 +16,15 @@ const App: React.FC = () => {
     const eyeLeft = document.querySelector("#Head .EyeLeft") as any;
     const eyeRight = document.querySelector("#Head .EyeRight") as any;
     const mouth = document.querySelector("#Head .Mouth") as any;
-
+    const outline = document.querySelector("#Head .HeadOutline") as any;
     // M137,47c-5,-5 -25,-5 -30,0c-5,5 -5,25 0,30c5,5 25,5 30,0c5,-5 5,-25 0,-30Z
+
     anime({
-      targets: [hoof],
-      d: "M137,47c-5,-5 -25,-5 -30,0l0,30l30,0l0,-30Z",
+      targets: [outline],
+      // translateX: anime.path(eyeLeft),
+      // translateY: anime.path(eyeLeft),
+      d:
+        "M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l37,-18.031l0,-190l-37,-38.043Z", //"M137,47c-5,-5 -25,-5 -30,0l0,30l30,0l0,-30Z",
       duration: 1000,
       loop: true,
       direction: "alternate",
