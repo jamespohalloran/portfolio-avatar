@@ -6,30 +6,58 @@ import { ReactComponent as Avatar } from "./Self_multidimensional.svg";
 import { ReactComponent as SpeechBubble } from "./avatar.svg";
 import anime from "animejs";
 
+interface Shape {
+  hoof: string;
+  clawLeft: string;
+  clawTop: string;
+  clawRight: string;
+  eyeLeft: string;
+  eyeRight: string;
+  mouth: string;
+  outline: string;
+}
+interface AvatarState {
+  shape: Shape;
+  rotation: number;
+}
+
+const getShapes = (root: string): Shape => {
+  return {
+    hoof: document.querySelector(`#${root} .ClawHoof`) as any,
+    clawLeft: document.querySelector(`#${root} .ClawLeft`) as any,
+    clawTop: document.querySelector(`#${root} .ClawTop`) as any,
+    clawRight: document.querySelector(`#${root} .ClawRight`) as any,
+    eyeLeft: document.querySelector(`#${root} .EyeLeft`) as any,
+    eyeRight: document.querySelector(`#${root} .EyeRight`) as any,
+    mouth: document.querySelector(`#${root} .Mouth`) as any,
+    outline: document.querySelector(`#${root} .HeadOutline`) as any
+  };
+};
+
 const App: React.FC = () => {
   useEffect(() => {
     const face = document.getElementById("avatar") as any;
-    const hoof = document.querySelector("#Head .ClawHoof") as any;
-    const clawLeft = document.querySelector("#Head .ClawLeft") as any;
-    const clawTop = document.querySelector("#Head .ClawTop") as any;
-    const clawRight = document.querySelector("#Head .ClawRight") as any;
-    const eyeLeft = document.querySelector("#Head .EyeLeft") as any;
-    const eyeRight = document.querySelector("#Head .EyeRight") as any;
-    const mouth = document.querySelector("#Head .Mouth") as any;
-    const outline = document.querySelector("#Head .HeadOutline") as any;
+
+    const shapes = [
+      {
+        rotation: 0,
+        shape: getShapes("Head")
+      },
+      {
+        rotation: -90,
+        shape: getShapes("Speech")
+      },
+      {
+        rotation: -180,
+        shape: getShapes("Videogames")
+      }
+    ];
+
     // M137,47c-5,-5 -25,-5 -30,0c-5,5 -5,25 0,30c5,5 25,5 30,0c5,-5 5,-25 0,-30Z
 
-    anime({
-      targets: [outline],
-      // translateX: anime.path(eyeLeft),
-      // translateY: anime.path(eyeLeft),
-      d:
-        "M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l37,-18.031l0,-190l-37,-38.043Z", //"M137,47c-5,-5 -25,-5 -30,0l0,30l30,0l0,-30Z",
-      duration: 1000,
-      loop: true,
-      direction: "alternate",
-      easing: "linear"
-    });
+    const outlinePath = document
+      .querySelector("#Videogames .HeadOutline")!
+      .getAttribute("d");
 
     // var hoofSnap = Snap.select("#ClawHoof");
     // var hoofRoundSnap = Snap.select("#Round-ClawHoof");
@@ -45,16 +73,16 @@ const App: React.FC = () => {
     //   morphSVG: "240,220 240,70 70,70 70,220"
     // });
 
-    tl.to(
-      hoof,
-      1,
-      {
-        // x: 110,
-        // y: 30,
-        borderRadius: "50%"
-      },
-      "speech"
-    );
+    // tl.to(
+    //   hoof,
+    //   1,
+    //   {
+    //     // x: 110,
+    //     // y: 30,
+    //     borderRadius: "50%"
+    //   },
+    //   "speech"
+    // );
     // tl.to(
     //   clawLeft,
     //   1,
@@ -124,11 +152,25 @@ const App: React.FC = () => {
 
     setInterval(
       () => {
-        if (Math.abs(rotation) <= 180) {
-          TweenMax.to(face, 1, {
-            rotation: rotation -= 90
-          });
-        }
+        anime({
+          // targets: [outline],
+          // // translateX: anime.path(eyeLeft),
+          // // translateY: anime.path(eyeLeft),
+          // d: outlinePath, //"M137,47c-5,-5 -25,-5 -30,0l0,30l30,0l0,-30Z",
+          // duration: 1000,
+          // loop: true,
+          // direction: "alternate",
+          // easing: "linear"
+          targets: [face],
+          rotate: -90,
+          duration: 1000
+        });
+
+        // if (Math.abs(rotation) <= 180) {
+        //   TweenMax.to(face, 1, {
+        //     rotation: rotation -= 90
+        //   });
+        // }
       },
       1500,
       500
