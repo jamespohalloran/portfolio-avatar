@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
-import "./avatar.css";
-import { ReactComponent as Avatar } from "./Self_multidimensional.svg";
+import "../static/App.css";
+import "../static/avatar.css";
+import { ReactComponent as Avatar } from "../static/avatar.svg";
 import anime from "animejs";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
@@ -86,9 +86,7 @@ const App: React.FC = () => {
     <div className="App">
       <header className="App-header">
         <Avatar id="avatar" />
-
         <p>James Makes Stuff</p>
-
         <div>
           <a
             onMouseOver={() => {
