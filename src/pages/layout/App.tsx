@@ -77,6 +77,18 @@ const App: React.FC = () => {
 
   useEffect(() => {
     face = document.getElementById("avatar") as any;
+
+    anime({
+      targets: document.querySelectorAll(`#Head *:not(.Arm)`),
+      strokeDashoffset: [anime.setDashoffset, 0],
+      easing: "easeInOutSine",
+      duration: 1000,
+      delay: function(el, i) {
+        return i * 50;
+      },
+      direction: "alternate",
+      loop: false
+    });
   }, []);
   useEffect(() => {
     rotateTo(AVATAR_STATES.filter(a => a.id == avatarState)[0]);

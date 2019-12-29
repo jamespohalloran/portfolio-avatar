@@ -8,15 +8,15 @@
 
 #avatar path,
 #avatar rect {
-  fill: #ebebeb;
+  fill: #000;
   fill-opacity: 0;
-  stroke: #ebebeb;
+  stroke: #000;
   stroke-width: 3px;
 }
 #HeadOutline {
-  fill: #ebebeb;
+  fill: #000;
   fill-opacity: 0;
-  stroke: #ebebeb;
+  stroke: #000;
   stroke-width: 3px;
 }
 #Speech-ref,
