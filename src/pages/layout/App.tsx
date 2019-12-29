@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../static/App.css";
-import "../static/avatar.css";
-import { ReactComponent as Avatar } from "../static/avatar.svg";
+import "../../static/css/App.css";
+import "../../static/css/avatar.css";
+import { ReactComponent as Avatar } from "../../static/avatar.svg";
 import anime from "animejs";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";

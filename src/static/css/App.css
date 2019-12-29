@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+
+  background: none;
+  background-color: #3d5afe;
+  background-image: url("../images/demo-bg.svg");
+  background-repeat: repeat !important;
+  background-position: 50% calc(50% + 40px), center calc(50% + -100px);
+  background-size: 100px 20px !important;
 }
 
 .App-logo {
