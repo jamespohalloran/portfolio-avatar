@@ -1,21 +1,26 @@
 .App {
   text-align: center;
 
-  background: none;
-  background-color: #3d5afe;
-  background-image: url("../images/demo-bg.svg");
+  background-image: url("../images/demo-bg-light.svg");
   background-repeat: repeat !important;
   background-position: 50% calc(50% + 40px), center calc(50% + -100px);
   background-size: 100px 20px !important;
+
+  padding: 15px 4vmin 15px;
 }
 
-.App-logo {
-  height: 40vmin;
+#header {
+  width: 100%;
+  text-align: left;
+}
+
+#logo {
+  text-transform: uppercase;
+  font-size: 1.5rem;
 }
 
 .App-header {
-  background-color: #fff;
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,4 +31,27 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+body {
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+#hero-links {
+  margin-top: 60px;
+}
+
+#hero-links a {
+  padding: 20px;
+  transition: all 0.2s ease-in-out;
+  font-size: 1em;
+}
+
+#hero-links a:hover {
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+#hero-links a.highlighted {
+  color: green;
 }

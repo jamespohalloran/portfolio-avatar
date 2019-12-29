@@ -3,6 +3,7 @@ import "../../static/css/App.css";
 import "../../static/css/avatar.css";
 import { ReactComponent as Avatar } from "../../static/avatar.svg";
 import anime from "animejs";
+import Head from "next/head";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
@@ -95,35 +96,50 @@ const App: React.FC = () => {
   }, [avatarState]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Avatar id="avatar" />
-        <p>James Makes Stuff</p>
-        <div>
-          <a
-            onMouseOver={() => {
-              setAvatarState("Head-ref");
-            }}
-          >
-            About Me
-          </a>
-          <a
-            onMouseOver={() => {
-              setAvatarState("Speech-ref");
-            }}
-          >
-            Blog
-          </a>
-          <a
-            onMouseOver={() => {
-              setAvatarState("Videogames-ref");
-            }}
-          >
-            Projects
-          </a>
+    <>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css?family=Barlow+Condensed:400,700&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <div className="App">
+        <div id="header">
+          <div id="logo">James O'Halloran</div>
         </div>
-      </header>
-    </div>
+        <div>
+          <header className="App-header">
+            <Avatar id="avatar" />
+            <div id="hero-links">
+              <a
+                className={avatarState == "Head-ref" ? "highlighted" : ""}
+                onMouseOver={() => {
+                  setAvatarState("Head-ref");
+                }}
+              >
+                About Me
+              </a>
+              <a
+                className={avatarState == "Speech-ref" ? "highlighted" : ""}
+                onMouseOver={() => {
+                  setAvatarState("Speech-ref");
+                }}
+              >
+                Blog
+              </a>
+              <a
+                className={avatarState == "Videogames-ref" ? "highlighted" : ""}
+                onMouseOver={() => {
+                  setAvatarState("Videogames-ref");
+                }}
+              >
+                Projects
+              </a>
+            </div>
+          </header>
+        </div>
+      </div>
+    </>
   );
 };
 
