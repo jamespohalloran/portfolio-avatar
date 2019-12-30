@@ -93,15 +93,40 @@ const App: React.FC = () => {
     });
 
     anime({
-      targets: document.querySelectorAll(`#bio svg *`),
+      targets: document.querySelectorAll(`#bio svg *:not(ellipse)`),
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: "easeInOutSine",
       duration: 1000,
       delay: function(el, i) {
-        return i * 50;
+        return i * 150;
       },
+      complete: function() {},
       direction: "alternate",
       loop: false
+    });
+    anime({
+      targets: "#bio path",
+      // left: "240px",
+      duration: 2000,
+      fillOpacity: 1,
+      easing: "easeInOutSine",
+      complete: function() {
+        anime({
+          targets: "#bio",
+          // left: "240px",
+          duration: 2000,
+          backgroundColor: "rgba(255, 209, 140, 0.42)",
+
+          easing: "easeInOutSine"
+        });
+        document.querySelector(`#bio #sun`)!.classList.add("rising");
+        anime({
+          targets: "#bio #sun",
+          duration: 2000,
+          easing: "easeInOutSine",
+          cy: "-100"
+        });
+      }
     });
   }, []);
   useEffect(() => {
