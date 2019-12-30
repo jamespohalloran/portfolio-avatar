@@ -124,7 +124,12 @@ const App: React.FC = () => {
           targets: "#bio #sun",
           duration: 2000,
           easing: "easeInOutSine",
-          cy: "-100"
+          cy: "-70"
+        });
+        anime({
+          targets: "#bio svg",
+          duration: 2000,
+          stroke: "#000"
         });
       }
     });
@@ -181,11 +186,11 @@ const App: React.FC = () => {
         <div className="bio-blurb">
           <h3>About Me</h3>
           <p>
-            James O'Halloran is a software developer with over 10 years of
-            industry experience. James created the video game Miner Meltdown,
-            and now spends most of his time making tools to make web development
-            extra awesome. He also runs a sock company (awkosock.com) with his
-            lovely wife!
+            James O'Halloran is a software developer from Prince Edward Island,
+            Canada. James created the video game Miner Meltdown, and now spends
+            most of his time making tools to make web development extra awesome.
+            He has over 10 years of experience working as a developer. Oh! and
+            he also runs the sock company, awkosock.com, with his lovely wife!
           </p>
         </div>
         <LighthouseBG />
