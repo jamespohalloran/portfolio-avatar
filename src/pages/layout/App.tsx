@@ -5,6 +5,7 @@ import { ReactComponent as Avatar } from "../../static/avatar.svg";
 import { ReactComponent as LighthouseBG } from "../../static/lighthouse.svg";
 import anime from "animejs";
 import Head from "next/head";
+import Link from "next/link";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
@@ -113,6 +114,7 @@ const App: React.FC = () => {
             <Avatar id="avatar" />
             <div id="hero-links">
               <a
+                href="#bio"
                 className={avatarState == "Head-ref" ? "highlighted" : ""}
                 onMouseOver={() => {
                   setAvatarState("Head-ref");
@@ -120,6 +122,7 @@ const App: React.FC = () => {
               >
                 About Me
               </a>
+
               <a
                 className={avatarState == "Speech-ref" ? "highlighted" : ""}
                 onMouseOver={() => {

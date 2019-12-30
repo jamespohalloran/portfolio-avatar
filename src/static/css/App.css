@@ -57,11 +57,16 @@ html {
   padding: 20px;
   transition: all 0.2s ease-in-out;
   font-size: 1em;
+  text-decoration: none;
 }
 
 #hero-links a:hover {
   cursor: pointer;
   font-size: 1.2em;
+}
+
+#hero-links a:-webkit-any-link {
+  color: black;
 }
 
 #hero-links a.highlighted {
