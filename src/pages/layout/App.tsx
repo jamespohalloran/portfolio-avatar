@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "../../static/css/App.css";
 import "../../static/css/avatar.css";
 import { ReactComponent as Avatar } from "../../static/avatar.svg";
@@ -91,48 +91,6 @@ const App: React.FC = () => {
       direction: "alternate",
       loop: false
     });
-
-    anime({
-      targets: document.querySelectorAll(`#bio svg *:not(ellipse)`),
-      strokeDashoffset: [anime.setDashoffset, 0],
-      easing: "easeInOutSine",
-      duration: 1000,
-      delay: function(el, i) {
-        return i * 150;
-      },
-      complete: function() {},
-      direction: "alternate",
-      loop: false
-    });
-    anime({
-      targets: "#bio path",
-      // left: "240px",
-      duration: 2000,
-      fillOpacity: 1,
-      easing: "easeInOutSine",
-      complete: function() {
-        anime({
-          targets: "#bio",
-          // left: "240px",
-          duration: 2000,
-          backgroundColor: "rgba(255, 209, 140, 0.42)",
-
-          easing: "easeInOutSine"
-        });
-        document.querySelector(`#bio #sun`)!.classList.add("rising");
-        anime({
-          targets: "#bio #sun",
-          duration: 2000,
-          easing: "easeInOutSine",
-          cy: "-70"
-        });
-        anime({
-          targets: "#bio svg",
-          duration: 2000,
-          stroke: "#000"
-        });
-      }
-    });
   }, []);
   useEffect(() => {
     rotateTo(AVATAR_STATES.filter(a => a.id == avatarState)[0]);
@@ -146,7 +104,7 @@ const App: React.FC = () => {
           rel="stylesheet"
         />
       </Head>
-      <div className="App">
+      <ScrollContainer className="App">
         <div id="header">
           <div id="logo">James O'Halloran</div>
         </div>
@@ -181,8 +139,53 @@ const App: React.FC = () => {
             </div>
           </header>
         </div>
-      </div>
-      <section id="bio">
+      </ScrollContainer>
+      <ScrollContainer
+        id="bio"
+        onActivate={() => {
+          anime({
+            targets: document.querySelectorAll(`#bio svg *:not(ellipse)`),
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: "easeInOutSine",
+            duration: 1000,
+            delay: function(el, i) {
+              return i * 150;
+            },
+            complete: function() {},
+            direction: "alternate",
+            loop: false
+          });
+          anime({
+            targets: "#bio path",
+            // left: "240px",
+            duration: 2000,
+            fillOpacity: 1,
+            easing: "easeInOutSine",
+            complete: function() {
+              anime({
+                targets: "#bio",
+                // left: "240px",
+                duration: 2000,
+                backgroundColor: "rgba(255, 209, 140, 0.42)",
+
+                easing: "easeInOutSine"
+              });
+              document.querySelector(`#bio #sun`)!.classList.add("rising");
+              anime({
+                targets: "#bio #sun",
+                duration: 2000,
+                easing: "easeInOutSine",
+                cy: "-70"
+              });
+              anime({
+                targets: "#bio svg",
+                duration: 4000,
+                stroke: "#000"
+              });
+            }
+          });
+        }}
+      >
         <div className="bio-blurb">
           <h3>About Me</h3>
           <p>
@@ -194,9 +197,63 @@ const App: React.FC = () => {
           </p>
         </div>
         <LighthouseBG />
-      </section>
+      </ScrollContainer>
     </>
   );
 };
+
+export const ScrollContainer = ({ children, onActivate, ...props }: any) => {
+  const ref = useRef() as any;
+  const [hasActivated, setHasActivated] = useState(false);
+  useEffect(() => {
+    const e = function(event: any) {
+      if (ref.current && isInViewPort(ref.current)) {
+        ref.current.classList.add("active");
+        ref.current.classList.add("activated");
+
+        if (!hasActivated && onActivate) {
+          onActivate();
+          setHasActivated(true);
+        }
+      } else {
+        ref.current.classList.remove("active");
+      }
+    };
+    window.addEventListener("scroll", e, false);
+
+    return () => {
+      window.removeEventListener("scroll", e);
+    };
+  }, [hasActivated]);
+
+  return (
+    <section ref={ref} {...props}>
+      {children}
+    </section>
+  );
+};
+
+function isInViewPort(element: Element) {
+  // Get the bounding client rectangle position in the viewport
+  var bounding = element.getBoundingClientRect();
+
+  // Checking part. Here the code checks if it's *fully* visible
+  // Edit this part if you just want a partial visibility
+  if (
+    bounding.top >= 0 &&
+    bounding.left >= 0 &&
+    bounding.right <=
+      (window.innerWidth || document.documentElement.clientWidth) &&
+    bounding.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight)
+  ) {
+    console.log("In the viewport! :)");
+    return true;
+  } else {
+    console.log("Not in the viewport. :(");
+    console.log(JSON.stringify(bounding));
+    return false;
+  }
+}
 
 export default App;
