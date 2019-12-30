@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../static/css/App.css";
 import "../../static/css/avatar.css";
 import { ReactComponent as Avatar } from "../../static/avatar.svg";
+import { ReactComponent as LighthouseBG } from "../../static/lighthouse.svg";
 import anime from "animejs";
 import Head from "next/head";
 
@@ -90,6 +91,18 @@ const App: React.FC = () => {
       direction: "alternate",
       loop: false
     });
+
+    anime({
+      targets: document.querySelectorAll(`#bio svg *`),
+      strokeDashoffset: [anime.setDashoffset, 0],
+      easing: "easeInOutSine",
+      duration: 1000,
+      delay: function(el, i) {
+        return i * 50;
+      },
+      direction: "alternate",
+      loop: false
+    });
   }, []);
   useEffect(() => {
     rotateTo(AVATAR_STATES.filter(a => a.id == avatarState)[0]);
@@ -139,6 +152,19 @@ const App: React.FC = () => {
           </header>
         </div>
       </div>
+      <section id="bio">
+        <div className="bio-blurb">
+          <h3>About Me</h3>
+          <p>
+            James O'Halloran is a software developer with over 10 years of
+            industry experience. James created the video game Miner Meltdown,
+            and now spends most of his time making tools to make web development
+            extra awesome. He also runs a sock company (awkosock.com) with his
+            lovely wife!
+          </p>
+        </div>
+        <LighthouseBG />
+      </section>
     </>
   );
 };

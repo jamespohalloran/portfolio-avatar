@@ -8,14 +8,14 @@
 
 #avatar path,
 #avatar rect {
-  fill: #000;
-  fill-opacity: 0;
+  fill: #fff;
+  fill-opacity: 1;
   stroke: #000;
   stroke-width: 3px;
 }
 #HeadOutline {
-  fill: #000;
-  fill-opacity: 0;
+  fill: #fff;
+  fill-opacity: 1;
   stroke: #000;
   stroke-width: 3px;
 }

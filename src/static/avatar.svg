@@ -40,6 +40,7 @@
     <path class="Arm" data-hidden="true" d="M224,84l-43,22l-0,12l12,10l32,0" style="fill:none;stroke:#000;stroke-width:3px;stroke-linejoin:miter;"/>
   </g>
   <g id="Head">
+   <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l50,-63.031l0,-120l-50,-63.043Z" />
     <rect class="Mouth" x="65.5" y="212.543" width="67" height="8" />
     <rect class="EyeLeft" x="45.5" y="148.543" width="30" height="30" />
     <rect class="EyeRight" x="133.5" y="148.543" width="30" height="30" />
@@ -49,7 +50,7 @@
       <rect class="ClawRight" x="139.5" y="21.543" width="8" height="20" />
       <rect class="ClawLeft" x="96.5" y="21.543" width="8" height="20" />
     </g>
-    <path class="HeadOutline" d="M187.5,1.5l-105,0l-37,38.043l0,47.312l-43.958,22.688l-0.042,12l12,11l32,0l0,97l37,20l105,-1.969l50,-63.031l0,-120l-50,-63.043Z" />
+   
     <path class="Arm" style="transform: scale(0);" d="M224,84l-43,22l-0,12l12,10l32,0"/>
   </g>
 </svg>
