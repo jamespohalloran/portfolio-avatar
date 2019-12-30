@@ -206,7 +206,7 @@ export const ScrollContainer = ({ children, onActivate, ...props }: any) => {
   const ref = useRef() as any;
   const [hasActivated, setHasActivated] = useState(false);
   useEffect(() => {
-    const e = function(event: any) {
+    const checkForInView = function() {
       if (ref.current && isInViewPort(ref.current)) {
         ref.current.classList.add("active");
         ref.current.classList.add("activated");
@@ -219,10 +219,11 @@ export const ScrollContainer = ({ children, onActivate, ...props }: any) => {
         ref.current.classList.remove("active");
       }
     };
-    window.addEventListener("scroll", e, false);
+    checkForInView();
+    window.addEventListener("scroll", checkForInView, false);
 
     return () => {
-      window.removeEventListener("scroll", e);
+      window.removeEventListener("scroll", checkForInView);
     };
   }, [hasActivated]);
 
