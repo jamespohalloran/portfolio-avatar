@@ -104,7 +104,7 @@ html {
 } */
 
 #portfolio {
-  height: calc(100vh - 200px); /**subtract footer*/
+  height: calc(100vh - 200px - 1px); /**subtract footer*/
   position: relative;
 }
 
@@ -113,11 +113,15 @@ html {
   width: 100%;
   position: relative;
   overflow: hidden;
+
+  border-width: 1px;
+  border-top-style: solid;
+  border-top-color: #ddd;
 }
 
 #bio {
   color: black;
-  height: 100vh;
+  height: calc(100vh - 1px);
   background-color: rgb(0, 0, 0);
 }
 

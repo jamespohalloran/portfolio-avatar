@@ -194,7 +194,7 @@ const App: React.FC = () => {
           }}
         >
           <div className="bio-blurb">
-            <h3>About Me</h3>
+            <h2>About Me</h2>
             <p>
               James O'Halloran is a software developer from Prince Edward
               Island, Canada. James created the video game Miner Meltdown, and
