@@ -3,6 +3,7 @@ import "../../static/css/App.css";
 import "../../static/css/avatar.css";
 import { ReactComponent as Avatar } from "../../static/avatar.svg";
 import { ReactComponent as LighthouseBG } from "../../static/lighthouse.svg";
+import { ReactComponent as Mailbox } from "../../static/mailbox.svg";
 import anime from "animejs";
 import Head from "next/head";
 import Link from "next/link";
@@ -205,6 +206,38 @@ const App: React.FC = () => {
           </div>
           <LighthouseBG />
         </ScrollContainer>
+        <ScrollContainer
+          id="portfolio"
+          onActivate={() => {
+            anime({
+              targets: document.querySelectorAll(`#mailbox *`),
+              strokeDashoffset: [anime.setDashoffset, 0],
+              easing: "easeInOutSine",
+              duration: 1000,
+              delay: function(el, i) {
+                return i * 150;
+              },
+              complete: function() {
+                anime({
+                  targets: [document.querySelector(`#mailbox-latch`)],
+                  rotate: -90,
+                  duration: 2000
+                });
+              }
+            });
+          }}
+        >
+          <div className="portfolio-inner">
+            <h2>Contact Me</h2>
+            <div className="contact-form">
+              <input name="name" />
+              <input name="email" />
+              <textarea name="message" />
+            </div>
+          </div>
+          <Mailbox id="mailbox" />
+        </ScrollContainer>
+        <footer></footer>
       </div>
     </>
   );
