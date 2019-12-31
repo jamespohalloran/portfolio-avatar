@@ -228,15 +228,20 @@ const App: React.FC = () => {
             });
           }}
         >
+          <Mailbox id="mailbox" />
           <div className="portfolio-inner">
             <h2>Contact Me</h2>
             <div className="contact-form">
-              <input name="name" />
-              <input name="email" />
-              <textarea name="message" />
+              <div>
+                <label>Name</label>
+                <input name="name" type="text" />
+                <label>Email</label>
+                <input name="email" type="email" />
+                <label>Message</label>
+                <textarea name="message" rows={5} />
+              </div>
             </div>
           </div>
-          <Mailbox id="mailbox" />
         </ScrollContainer>
         <footer></footer>
       </div>

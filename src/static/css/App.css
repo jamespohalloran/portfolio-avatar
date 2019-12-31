@@ -10,6 +10,10 @@
   text-align: center;
 }
 
+h2 {
+  margin-top: 0;
+}
+
 #header {
   width: 100%;
   text-align: left;
@@ -154,7 +158,7 @@ html {
 }
 
 .bio-blurb {
-  padding: 100px;
+  padding: 80px;
   width: 30%;
 }
 
@@ -165,17 +169,8 @@ html {
 }
 
 .portfolio-inner {
-  padding: 100px;
-}
-
-.portfolio-cover-container {
-  display: grid;
-  grid-gap: 50px;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-}
-
-.portfolio-minermeltdown-cover {
-  background-image: url("http://minermeltdown.net/wp-content/uploads/2016/03/cover_1920x1080.png");
+  padding: 80px;
+  position: absolute;
 }
 
 .contact-form {
@@ -184,15 +179,18 @@ html {
   border-color: black;
   width: 300px;
   background-color: white;
+  padding: 10px;
 }
 
-.contact-form * {
+.contact-form input,
+.contact-form textarea {
   display: block;
-  margin: 10px;
   border-style: solid;
   border-width: 2px;
   border-color: black;
   background-color: white;
+  margin-bottom: 10px;
+  width: -webkit-fill-available;
 }
 
 footer {
@@ -203,6 +201,11 @@ footer {
 #mailbox {
   position: absolute;
   bottom: 0;
+  stroke-width: 0;
+}
+
+.activated #mailbox {
+  stroke-width: 1;
 }
 
 #mailbox-latch {
