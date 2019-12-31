@@ -134,7 +134,8 @@ html {
   stroke-width: 1;
 }
 
-#bio svg rect {
+#bio svg rect,
+#mailbox {
   stroke: #000;
 }
 
@@ -145,6 +146,11 @@ html {
 #bio #sun.rising {
   fill: #fff;
   fill-opacity: 1;
+}
+
+#mailbox {
+  fill: #fff;
+  fill-opacity: 0;
 }
 
 .bio-blurb {

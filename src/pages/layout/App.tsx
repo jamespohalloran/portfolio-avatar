@@ -214,6 +214,7 @@ const App: React.FC = () => {
               strokeDashoffset: [anime.setDashoffset, 0],
               easing: "easeInOutSine",
               duration: 1000,
+              fillOpacity: 1,
               delay: function(el, i) {
                 return i * 150;
               },
