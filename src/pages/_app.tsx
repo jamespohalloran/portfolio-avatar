@@ -1,6 +1,7 @@
 import React from "react";
 import App from "next/app";
 import { AnimatePresence } from "framer-motion";
+import Head from "next/head";
 
 class MyApp extends App {
   render() {
@@ -8,9 +9,17 @@ class MyApp extends App {
 
     console.log("wrapper");
     return (
-      <AnimatePresence exitBeforeEnter>
-        <Component {...pageProps} key={router.route} />
-      </AnimatePresence>
+      <>
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css?family=Barlow+Condensed:400,700&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
+        <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
+      </>
     );
   }
 }
