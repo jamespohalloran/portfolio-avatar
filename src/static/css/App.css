@@ -215,3 +215,12 @@ footer {
 #mailbox-latch {
   transform-origin: 425px 196px 0px;
 }
+
+#tansition-bg {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background-color: #fff;
+  opacity: 1;
+  pointer-events: none;
+}

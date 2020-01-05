@@ -7,6 +7,7 @@ import { ReactComponent as Mailbox } from "../../static/mailbox.svg";
 import anime from "animejs";
 import Head from "next/head";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
@@ -76,6 +77,27 @@ const rotateTo = (state: AvatarState) => {
   });
 };
 
+let easing = [0.175, 0.85, 0.42, 0.96];
+const backVariants = {
+  exit: {
+    // x: 100,
+    opacity: 1,
+    transition: {
+      duration: 2.5,
+      ease: easing
+    }
+  },
+  enter: {
+    // x: 0,
+    opacity: 0,
+    transition: {
+      delay: 0,
+      duration: 2.5,
+      ease: easing
+    }
+  }
+};
+
 const App: React.FC = () => {
   const [avatarState, setAvatarState] = useState<AVATAR_STATE_ID>("Head-ref");
 
@@ -99,7 +121,7 @@ const App: React.FC = () => {
   }, [avatarState]);
 
   return (
-    <>
+    <motion.div initial="exit" animate="enter" exit="exit">
       <Head>
         <link
           href="https://fonts.googleapis.com/css?family=Barlow+Condensed:400,700&display=swap"
@@ -107,46 +129,50 @@ const App: React.FC = () => {
         />
       </Head>
       <div id="landing-container">
-        <ScrollContainer className="App">
-          <div id="header">
-            <div id="logo">James O'Halloran</div>
-          </div>
-          <div>
-            <header className="App-header">
-              <Avatar id="avatar" />
-              <div id="hero-links">
-                <a
-                  href="#bio"
-                  className={avatarState == "Head-ref" ? "highlighted" : ""}
-                  onMouseOver={() => {
-                    setAvatarState("Head-ref");
-                  }}
-                >
-                  About Me
-                </a>
-
-                <a
-                  className={avatarState == "Speech-ref" ? "highlighted" : ""}
-                  onMouseOver={() => {
-                    setAvatarState("Speech-ref");
-                  }}
-                >
-                  Blog
-                </a>
-                <a
-                  className={
-                    avatarState == "Videogames-ref" ? "highlighted" : ""
-                  }
-                  onMouseOver={() => {
-                    setAvatarState("Videogames-ref");
-                  }}
-                >
-                  Projects
-                </a>
-              </div>
-            </header>
-          </div>
-        </ScrollContainer>
+        <>
+          <motion.div variants={backVariants}>
+            <div id="tansition-bg" />
+          </motion.div>
+          <ScrollContainer className="App">
+            <div id="header">
+              <div id="logo">James O'Halloran</div>
+            </div>
+            <div>
+              <header className="App-header">
+                <Avatar id="avatar" />
+                <div id="hero-links">
+                  <a
+                    href="#bio"
+                    className={avatarState == "Head-ref" ? "highlighted" : ""}
+                    onMouseOver={() => {
+                      setAvatarState("Head-ref");
+                    }}
+                  >
+                    About Me
+                  </a>
+                  <a
+                    className={avatarState == "Speech-ref" ? "highlighted" : ""}
+                    onMouseOver={() => {
+                      setAvatarState("Speech-ref");
+                    }}
+                  >
+                    Blog
+                  </a>
+                  <a
+                    className={
+                      avatarState == "Videogames-ref" ? "highlighted" : ""
+                    }
+                    onMouseOver={() => {
+                      setAvatarState("Videogames-ref");
+                    }}
+                  >
+                    Projects
+                  </a>
+                </div>
+              </header>
+            </div>
+          </ScrollContainer>
+        </>
         <ScrollContainer
           id="bio"
           onActivate={() => {
@@ -245,7 +271,7 @@ const App: React.FC = () => {
         </ScrollContainer>
         <footer></footer>
       </div>
-    </>
+    </motion.div>
   );
 };
 
