@@ -4,6 +4,7 @@ import "../../static/css/avatar.css";
 import { ReactComponent as LighthouseBG } from "../../static/lighthouse.svg";
 import anime from "animejs";
 import { motion } from "framer-motion";
+import { ScrollContainer } from "../../helpers/ScrollContainer";
 
 let easing = [0.175, 0.85, 0.42, 0.96];
 const backVariants = {
@@ -60,6 +61,7 @@ const About: React.FC = () => {
           easing: "easeInOutSine",
           cy: "-70"
         });
+        console.log("bio svg");
         anime({
           targets: "#bio svg",
           duration: 4000,
@@ -75,7 +77,7 @@ const About: React.FC = () => {
         <div id="tansition-bg" />
       </motion.div>
 
-      <div id="bio">
+      <ScrollContainer id="bio">
         <div className="bio-blurb">
           <h2>About Me</h2>
           <p>
@@ -87,7 +89,7 @@ const About: React.FC = () => {
           </p>
         </div>
         <LighthouseBG />
-      </div>
+      </ScrollContainer>
       <footer></footer>
     </motion.div>
   );
