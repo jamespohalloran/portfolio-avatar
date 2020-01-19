@@ -227,3 +227,17 @@ footer {
 #avatar {
   z-index: 1;
 }
+
+.contact-btn {
+  padding: 10px;
+  border-style: solid;
+  border-color: #000;
+  border-width: 1px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.contact-btn a {
+  color: black;
+  text-decoration: none;
+}

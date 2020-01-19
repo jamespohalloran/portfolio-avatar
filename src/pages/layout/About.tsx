@@ -5,6 +5,7 @@ import { ReactComponent as LighthouseBG } from "../../static/lighthouse.svg";
 import anime from "animejs";
 import { motion } from "framer-motion";
 import { ScrollContainer } from "../../helpers/ScrollContainer";
+import Link from "next/link";
 
 let easing = [0.175, 0.85, 0.42, 0.96];
 const backVariants = {
@@ -87,6 +88,11 @@ const About: React.FC = () => {
             He has over 10 years of experience working as a developer. Oh! and
             he also runs the sock company, awkosock.com, with his lovely wife!
           </p>
+          <span className="contact-btn">
+            <Link href="/contact">
+              <a>Contact Me</a>
+            </Link>
+          </span>
         </div>
         <LighthouseBG />
       </ScrollContainer>
