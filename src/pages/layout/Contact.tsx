@@ -5,7 +5,7 @@ import { ReactComponent as Mailbox } from "../../static/mailbox.svg";
 import anime from "animejs";
 import { motion } from "framer-motion";
 import { ScrollContainer } from "../../helpers/ScrollContainer";
-
+import { Header } from "./Header";
 let easing = [0.175, 0.85, 0.42, 0.96];
 const backVariants = {
   exit: {
@@ -54,6 +54,7 @@ const Contact: React.FC = () => {
         <div id="tansition-bg" />
       </motion.div>
       <ScrollContainer id="portfolio">
+        <Header />
         <Mailbox id="mailbox" />
         <div className="portfolio-inner">
           <h2>Contact Me</h2>

@@ -8,6 +8,7 @@ import anime from "animejs";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ScrollContainer } from "../../helpers/ScrollContainer";
+import { Header } from "./Header";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
@@ -124,9 +125,7 @@ const App: React.FC = () => {
     <motion.div initial="exit" animate="enter" exit="exit">
       <motion.div id="tansition-bg" variants={backVariants}></motion.div>
       <ScrollContainer className="App">
-        <div id="header">
-          <div id="logo">James O'Halloran</div>
-        </div>
+        <Header />
         <div>
           <header className="App-header">
             <Avatar id="avatar" />

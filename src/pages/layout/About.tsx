@@ -6,6 +6,7 @@ import anime from "animejs";
 import { motion } from "framer-motion";
 import { ScrollContainer } from "../../helpers/ScrollContainer";
 import Link from "next/link";
+import { Header } from "./Header";
 
 let easing = [0.175, 0.85, 0.42, 0.96];
 const backVariants = {
@@ -79,6 +80,7 @@ const About: React.FC = () => {
       </motion.div>
 
       <ScrollContainer id="bio">
+        <Header />
         <div className="bio-blurb">
           <h2>About Me</h2>
           <p>
