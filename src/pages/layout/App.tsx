@@ -125,7 +125,7 @@ const App: React.FC = () => {
     <motion.div initial="exit" animate="enter" exit="exit">
       <motion.div id="tansition-bg" variants={backVariants}></motion.div>
       <ScrollContainer className="App">
-        <Header />
+        <Header showNav={false} />
         <div>
           <header className="App-header">
             <Avatar id="avatar" />
