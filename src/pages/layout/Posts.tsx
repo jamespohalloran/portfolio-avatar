@@ -4,6 +4,7 @@ import "../../static/css/avatar.css";
 import { ReactComponent as LighthouseBG } from "../../static/lighthouse-flat.svg";
 import { Header } from "./Header";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Post: React.FC = () => {
   return (
@@ -19,9 +20,14 @@ const Post: React.FC = () => {
   );
 };
 
+const backVariants = {
+  exit: {},
+  enter: {}
+};
+
 const PostPreview = () => (
-  <>
-    {" "}
+  <motion.div initial="exit" animate="enter" exit="exit">
+    <motion.div variants={backVariants}></motion.div>{" "}
     <div className="post-preview">
       <h2>This is a post</h2>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -36,7 +42,7 @@ const PostPreview = () => (
         </Link>
       </span>
     </div>
-  </>
+  </motion.div>
 );
 
 export default Post;
