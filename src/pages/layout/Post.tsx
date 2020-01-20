@@ -8,7 +8,7 @@ import { Header } from "./Header";
 
 const Post: React.FC = () => {
   return (
-    <div id="post">
+    <div id="post" className="colored-sky">
       <Header />
       <div className="bio-blurb">
         <h2>Stub post</h2>
