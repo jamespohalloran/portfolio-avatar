@@ -154,8 +154,13 @@ html {
   stroke-width: 0;
 }
 
-#bio svg path {
+svg.lighthouse path {
   fill: rgba(255, 255, 255, 1);
+}
+
+#post .lighthouse {
+  stroke: #000;
+  overflow: visible;
 }
 
 #bio.activated svg {
@@ -174,6 +179,13 @@ html {
 #bio #sun.rising {
   fill: #fff;
   fill-opacity: 1;
+}
+
+.post-content {
+  padding: 40px 8vmin 10vmin;
+  min-height: 100vh;
+  background-color: white;
+  font-size: 1.3rem;
 }
 
 #mailbox {

@@ -96,7 +96,7 @@ const About: React.FC = () => {
             </Link>
           </span>
         </div>
-        <LighthouseBG />
+        <LighthouseBG className="lighthouse" />
       </ScrollContainer>
       <footer></footer>
     </motion.div>
