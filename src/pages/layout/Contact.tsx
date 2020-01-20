@@ -12,7 +12,7 @@ const backVariants = {
     // x: 100,
     opacity: 1,
     transition: {
-      duration: 2.5,
+      duration: 0.5,
       ease: easing
     }
   },
@@ -21,7 +21,7 @@ const backVariants = {
     opacity: 0,
     transition: {
       delay: 0,
-      duration: 2.5,
+      duration: 0.5,
       ease: easing
     }
   }

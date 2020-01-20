@@ -56,7 +56,11 @@ const About: React.FC = () => {
 
           easing: "easeInOutSine"
         });
-        document.querySelector(`#bio #sun`)!.classList.add("rising");
+
+        const sunEl = document.querySelector(`#bio #sun`);
+        if (sunEl) {
+          sunEl.classList.add("rising");
+        }
         anime({
           targets: "#bio #sun",
           duration: 2000,

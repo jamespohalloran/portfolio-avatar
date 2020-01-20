@@ -195,6 +195,7 @@ svg.lighthouse path {
 #mailbox {
   fill: #fff;
   fill-opacity: 0;
+  pointer-events: none;
 }
 
 .bio-blurb {
