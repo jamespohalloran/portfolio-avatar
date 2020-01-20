@@ -288,6 +288,10 @@ footer {
   border-color: #636363;
 }
 
+.post-preview {
+  color: black;
+}
+
 #main-content {
   padding: 0px 8vmin 4vmin;
 }
