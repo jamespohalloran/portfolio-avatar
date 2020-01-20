@@ -16,7 +16,7 @@ export const Header = ({ showNav = true }: Props) => {
           <Link href="/about">
             <a>About Me</a>
           </Link>
-          <Link href="/post">
+          <Link href="/posts">
             <a>Blog</a>
           </Link>
           <Link href="/projects">

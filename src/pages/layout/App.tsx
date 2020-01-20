@@ -140,7 +140,7 @@ const App: React.FC = () => {
                   About Me
                 </a>
               </Link>
-              <Link href="/post">
+              <Link href="/posts">
                 <a
                   className={avatarState == "Speech-ref" ? "highlighted" : ""}
                   onMouseOver={() => {
