@@ -9,7 +9,9 @@ export const Header = ({ showNav = true }: Props) => {
   return (
     <div id="header">
       <div id="logo">
-        <Link href="/">James O'Halloran</Link>
+        <Link href="/">
+          <a>James O'Halloran</a>
+        </Link>
       </div>
       {showNav && (
         <div id="header-nav">
