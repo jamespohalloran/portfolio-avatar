@@ -5,37 +5,34 @@ import { ReactComponent as LighthouseBG } from "../../static/lighthouse-flat.svg
 import { Header } from "./layout/Header";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import matter from "gray-matter";
+import ReactMarkdown from "react-markdown";
 
-const Post: React.FC = () => {
+export default function Posts({ posts }: any) {
   return (
     <div id="posts" className="colored-sky">
       <Header />
       <div id="main-content">
         <h1>Blog</h1>
-        <PostPreview />
-        <PostPreview />
-        <PostPreview />
+        {(posts || []).map((p: any) => (
+          <PostPreview {...p} />
+        ))}
       </div>
     </div>
   );
-};
+}
 
 const backVariants = {
   exit: {},
   enter: {}
 };
 
-const PostPreview = () => (
+const PostPreview = ({ post }: any) => (
   <motion.div initial="exit" animate="enter" exit="exit">
     <motion.div variants={backVariants}></motion.div>{" "}
     <div className="post-preview">
-      <h2>This is a post</h2>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release...{" "}
+      <h2>{post.data.title}</h2>
+      <ReactMarkdown source={post.content} />{" "}
       <span>
         <Link href="/post">
           <a>(read more)</a>
@@ -45,4 +42,34 @@ const PostPreview = () => (
   </motion.div>
 );
 
-export default Post;
+Posts.getInitialProps = async function(context: any) {
+  // get all blog data for list
+  const posts = (context => {
+    const keys = context.keys();
+    const values = keys.map(context);
+    const data = keys.map((key: string, index: number) => {
+      // Create slug from filename
+      const slug = key
+        .replace(/^.*[\\\/]/, "")
+        .split(".")
+        .slice(0, -1)
+        .join(".");
+      const value = values[index];
+      // Parse yaml metadata & markdownbody in document
+      const post = matter(value.default);
+      return {
+        post: {
+          ...post,
+          content: post.content.substring(0, 300)
+        },
+        slug
+      };
+    });
+    return data;
+  })((require as any).context("../content/posts", true, /\.md$/));
+
+  return {
+    fileRelativePath: `src/data/config.json`,
+    posts
+  };
+};
