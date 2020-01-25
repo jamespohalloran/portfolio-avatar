@@ -21,8 +21,6 @@ export default function Post(props: Props) {
   const markdownBody = props.content;
   const frontmatter = props.data;
 
-  console.log(props);
-
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
       <motion.div variants={backVariants}></motion.div>
@@ -45,7 +43,6 @@ Post.getInitialProps = async function(context: any) {
   const content = await import(`../../content/posts/${slug}.md`);
 
   const data = matter(content.default);
-  console.log(data);
   return {
     ...data
   };
