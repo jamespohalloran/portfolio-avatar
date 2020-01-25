@@ -27,14 +27,14 @@ const backVariants = {
   enter: {}
 };
 
-const PostPreview = ({ post }: any) => (
+const PostPreview = ({ post, slug }: any) => (
   <motion.div initial="exit" animate="enter" exit="exit">
     <motion.div variants={backVariants}></motion.div>{" "}
     <div className="post-preview">
       <h2>{post.data.title}</h2>
       <ReactMarkdown source={post.content} />{" "}
       <span>
-        <Link href="/post">
+        <Link href={`/blog/${slug}`}>
           <a>(read more)</a>
         </Link>
       </span>
@@ -51,6 +51,7 @@ Posts.getInitialProps = async function(context: any) {
       // Create slug from filename
       const slug = key
         .replace(/^.*[\\\/]/, "")
+        // .replace(" ", "-")
         .split(".")
         .slice(0, -1)
         .join(".");

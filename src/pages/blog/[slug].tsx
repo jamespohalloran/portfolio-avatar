@@ -40,7 +40,9 @@ export default function Post(props: Props) {
 
 Post.getInitialProps = async function(context: any) {
   const { slug } = context.query;
-  const content = await import(`../../content/posts/${slug}.md`);
+  const content = await import(
+    `../../content/posts/${decodeURIComponent(slug)}.md`
+  );
 
   const data = matter(content.default);
   return {
