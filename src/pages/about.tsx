@@ -13,14 +13,14 @@ import ReactMarkdown from "react-markdown";
 let easing = [0.175, 0.85, 0.42, 0.96];
 const backVariants = {
   exit: {
-    backgroundColor: "rgba(0, 0, 0, 1)",
+    // backgroundColor: "rgba(0, 0, 0, 1)",
     transition: {
       duration: 0.5,
       ease: easing
     }
   },
   enter: {
-    backgroundColor: "rgba(0, 0, 0, 0)",
+    // backgroundColor: "rgba(0, 0, 0, 0)",
     transition: {
       delay: 0,
       duration: 0.5,
@@ -51,7 +51,7 @@ export default function About(props: any) {
       easing: "easeInOutSine",
       complete: function() {
         anime({
-          targets: "#bio",
+          targets: "body",
           // left: "240px",
           duration: 2000,
           backgroundColor: "rgba(255, 209, 140, 0.42)",

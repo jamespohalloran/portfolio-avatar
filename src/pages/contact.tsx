@@ -6,28 +6,15 @@ import anime from "animejs";
 import { motion } from "framer-motion";
 import { ScrollContainer } from "../helpers/ScrollContainer";
 import { Header } from "./layout/Header";
+import { initialPageStates } from "../helpers/pageStates";
 let easing = [0.175, 0.85, 0.42, 0.96];
-const backVariants = {
-  exit: {
-    // x: 100,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: easing
-    }
-  },
-  enter: {
-    // x: 0,
-    opacity: 0,
-    transition: {
-      delay: 0,
-      duration: 0.5,
-      ease: easing
-    }
-  }
-};
 
-const Contact: React.FC = () => {
+interface Props {
+  pathName: string;
+}
+
+export default function Contact({ pathName }: Props) {
+  console.log(`slug ${pathName}`);
   useEffect(() => {
     anime({
       targets: document.querySelectorAll(`#mailbox *`),
@@ -47,6 +34,29 @@ const Contact: React.FC = () => {
       }
     });
   }, []);
+
+  const backVariants = {
+    exit: () => {
+      // const vals = {
+      //   ...initialPageStates[window.location.pathname],
+      //   opacity: 1
+      // };
+      // console.log(vals);
+      console.log(`slug ${pathName}`);
+      return {
+        ...initialPageStates[pathName],
+        opacity: 1
+      };
+    },
+    enter: {
+      // x: 0,
+      opacity: 0,
+      transition: {
+        duration: 0.5,
+        ease: easing
+      }
+    }
+  };
 
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
@@ -73,6 +83,12 @@ const Contact: React.FC = () => {
       <footer></footer>
     </motion.div>
   );
-};
+}
 
-export default Contact;
+Contact.getInitialProps = async function(ctx: any) {
+  console.log(`slug! ${JSON.stringify(ctx.pathname)}`);
+
+  return {
+    pathName: ctx.pathname
+  };
+};

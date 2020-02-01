@@ -79,10 +79,10 @@ const rotateTo = (state: AvatarState) => {
 };
 
 let easing = [0.175, 0.85, 0.42, 0.96];
-const backVariants = {
+const avatarVariants = {
   exit: {
     // x: 100,
-    backgroundColor: "rgba(0, 0, 0, 1)",
+    opacity: 0,
     transition: {
       duration: 0.5,
       ease: easing
@@ -90,12 +90,7 @@ const backVariants = {
   },
   enter: {
     // x: 0,
-    backgroundColor: "rgba(0, 0, 0, 0)",
-    transition: {
-      delay: 0,
-      duration: 0.5,
-      ease: easing
-    }
+    opacity: 1
   }
 };
 
@@ -122,13 +117,14 @@ const Homepage: React.FC = () => {
   }, [avatarState]);
 
   return (
-    <motion.div initial="exit" animate="enter" exit="exit">
-      <motion.div id="tansition-bg" variants={backVariants}></motion.div>
+    <motion.div animate="enter" exit="exit">
       <ScrollContainer className="App">
         <Header showNav={false} />
         <div>
           <header className="App-header">
-            <Avatar id="avatar" />
+            <motion.div initial="enter" variants={avatarVariants}>
+              <Avatar id="avatar" />
+            </motion.div>
             <div id="hero-links">
               <Link href="/about">
                 <a

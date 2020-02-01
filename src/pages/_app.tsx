@@ -3,6 +3,19 @@ import App from "next/app";
 import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 
+import Router from "next/router";
+import { initialPageStates } from "../helpers/pageStates";
+
+const handleRouteChange = (url: string) => {
+  const initialState = initialPageStates[url];
+  document.body.setAttribute(
+    "bg-state",
+    initialState ? initialState.bgState : "light"
+  );
+};
+
+Router.events.on("routeChangeStart", handleRouteChange);
+
 class MyApp extends App {
   render() {
     const { Component, pageProps, router } = this.props;

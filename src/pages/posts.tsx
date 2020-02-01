@@ -10,7 +10,7 @@ import ReactMarkdown from "react-markdown";
 
 export default function Posts({ posts }: any) {
   return (
-    <div id="posts" className="colored-sky">
+    <div id="posts">
       <Header />
       <div id="main-content">
         <h1>Blog</h1>
