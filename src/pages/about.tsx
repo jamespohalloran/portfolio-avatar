@@ -50,14 +50,7 @@ export default function About(props: any) {
       fillOpacity: 1,
       easing: "easeInOutSine",
       complete: function() {
-        anime({
-          targets: "body",
-          // left: "240px",
-          duration: 2000,
-          backgroundColor: "rgba(255, 209, 140, 0.42)",
-
-          easing: "easeInOutSine"
-        });
+        document.body.setAttribute("bg-state", "bright");
 
         const sunEl = document.querySelector(`#bio #sun`);
         if (sunEl) {
@@ -69,14 +62,12 @@ export default function About(props: any) {
           easing: "easeInOutSine",
           cy: "-70"
         });
-        console.log("bio svg");
-        anime({
-          targets: "#bio svg",
-          duration: 4000,
-          stroke: "#000"
-        });
       }
     });
+
+    return () => {
+      document.body.setAttribute("bg-state", "light");
+    };
   }, []);
 
   const markdownBody = props.content;
