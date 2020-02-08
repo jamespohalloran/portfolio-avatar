@@ -9,6 +9,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ScrollContainer } from "../helpers/ScrollContainer";
 import { Header } from "./layout/Header";
+import FadeWrapper from "../helpers/FadeWrapper";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
@@ -122,39 +123,41 @@ const Homepage: React.FC = () => {
         <Header showNav={false} />
         <div>
           <header className="App-header">
-            <motion.div initial="enter" variants={avatarVariants}>
+            <FadeWrapper fadeIn>
               <Avatar id="avatar" />
-            </motion.div>
-            <div id="hero-links">
-              <Link href="/about">
+              <div id="hero-links">
+                <Link href="/about">
+                  <a
+                    className={avatarState == "Head-ref" ? "highlighted" : ""}
+                    onMouseOver={() => {
+                      setAvatarState("Head-ref");
+                    }}
+                  >
+                    About Me
+                  </a>
+                </Link>
+                <Link href="/posts">
+                  <a
+                    className={avatarState == "Speech-ref" ? "highlighted" : ""}
+                    onMouseOver={() => {
+                      setAvatarState("Speech-ref");
+                    }}
+                  >
+                    Blog
+                  </a>
+                </Link>
                 <a
-                  className={avatarState == "Head-ref" ? "highlighted" : ""}
+                  className={
+                    avatarState == "Videogames-ref" ? "highlighted" : ""
+                  }
                   onMouseOver={() => {
-                    setAvatarState("Head-ref");
+                    setAvatarState("Videogames-ref");
                   }}
                 >
-                  About Me
+                  Projects
                 </a>
-              </Link>
-              <Link href="/posts">
-                <a
-                  className={avatarState == "Speech-ref" ? "highlighted" : ""}
-                  onMouseOver={() => {
-                    setAvatarState("Speech-ref");
-                  }}
-                >
-                  Blog
-                </a>
-              </Link>
-              <a
-                className={avatarState == "Videogames-ref" ? "highlighted" : ""}
-                onMouseOver={() => {
-                  setAvatarState("Videogames-ref");
-                }}
-              >
-                Projects
-              </a>
-            </div>
+              </div>
+            </FadeWrapper>
           </header>
         </div>
       </ScrollContainer>

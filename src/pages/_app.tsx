@@ -1,6 +1,6 @@
 import React from "react";
 import App from "next/app";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Head from "next/head";
 
 import Router from "next/router";

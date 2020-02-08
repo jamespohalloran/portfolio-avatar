@@ -9,25 +9,7 @@ import Link from "next/link";
 import { Header } from "./layout/Header";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
-
-let easing = [0.175, 0.85, 0.42, 0.96];
-const backVariants = {
-  exit: {
-    // backgroundColor: "rgba(0, 0, 0, 1)",
-    transition: {
-      duration: 0.5,
-      ease: easing
-    }
-  },
-  enter: {
-    // backgroundColor: "rgba(0, 0, 0, 0)",
-    transition: {
-      delay: 0,
-      duration: 0.5,
-      ease: easing
-    }
-  }
-};
+import FadeWrapper from "../helpers/FadeWrapper";
 
 export default function About(props: any) {
   useEffect(() => {
@@ -77,15 +59,20 @@ export default function About(props: any) {
     <motion.div initial="exit" animate="enter" exit="exit">
       <ScrollContainer id="bio">
         <Header />
-        <div className="bio-blurb">
-          <h2>{frontmatter.title}</h2>
-          <ReactMarkdown source={markdownBody} />
-          <span className="contact-btn">
-            <Link href="/contact">
-              <a>{frontmatter.contactButton}</a>
-            </Link>
-          </span>
-        </div>
+        <FadeWrapper>
+          <div className="bio-blurb">
+            <h2>{frontmatter.title}</h2>
+            <div className="boxed-content">
+              <ReactMarkdown source={markdownBody} />
+              <div className="contact-btn">
+                <Link href="/contact">
+                  <a>{frontmatter.contactButton}</a>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </FadeWrapper>
+
         <LighthouseBG className="lighthouse" />
       </ScrollContainer>
       <footer></footer>

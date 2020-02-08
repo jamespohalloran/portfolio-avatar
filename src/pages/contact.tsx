@@ -6,8 +6,7 @@ import anime from "animejs";
 import { motion } from "framer-motion";
 import { ScrollContainer } from "../helpers/ScrollContainer";
 import { Header } from "./layout/Header";
-import { initialPageStates } from "../helpers/pageStates";
-let easing = [0.175, 0.85, 0.42, 0.96];
+import FadeWrapper from "../helpers/FadeWrapper";
 
 interface Props {
   pathName: string;
@@ -35,47 +34,26 @@ export default function Contact({ pathName }: Props) {
     });
   }, []);
 
-  const backVariants = {
-    exit: () => {
-      // const vals = {
-      //   ...initialPageStates[window.location.pathname],
-      //   opacity: 1
-      // };
-      // console.log(vals);
-      console.log(`slug ${pathName}`);
-      return {
-        ...initialPageStates[pathName],
-        opacity: 1
-      };
-    },
-    enter: {
-      // x: 0,
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-        ease: easing
-      }
-    }
-  };
-
   return (
-    <motion.div initial="exit" animate="enter" exit="exit">
+    <motion.div animate="enter" exit="exit">
       <ScrollContainer id="portfolio">
         <Header />
         <Mailbox id="mailbox" />
-        <div className="portfolio-inner">
-          <h2>Contact Me</h2>
-          <div className="contact-form">
-            <div>
-              <label>Name</label>
-              <input name="name" type="text" />
-              <label>Email</label>
-              <input name="email" type="email" />
-              <label>Message</label>
-              <textarea name="message" rows={5} />
+        <FadeWrapper>
+          <div className="portfolio-inner">
+            <h2>Contact Me</h2>
+            <div className="contact-form boxed-content">
+              <div>
+                <label>Name</label>
+                <input name="name" type="text" />
+                <label>Email</label>
+                <input name="email" type="email" />
+                <label>Message</label>
+                <textarea name="message" rows={5} />
+              </div>
             </div>
           </div>
-        </div>
+        </FadeWrapper>
       </ScrollContainer>
       <footer></footer>
     </motion.div>
