@@ -60,9 +60,6 @@ export default function Contact({ pathName }: Props) {
 
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
-      <motion.div variants={backVariants}>
-        <div id="tansition-bg" />
-      </motion.div>
       <ScrollContainer id="portfolio">
         <Header />
         <Mailbox id="mailbox" />

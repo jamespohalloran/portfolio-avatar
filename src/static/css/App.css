@@ -281,14 +281,6 @@ footer {
   transform-origin: 425px 196px 0px;
 }
 
-#tansition-bg {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  pointer-events: none;
-  z-index: 100;
-}
-
 #avatar {
   z-index: 1;
 }

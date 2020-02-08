@@ -75,10 +75,6 @@ export default function About(props: any) {
 
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
-      <motion.div variants={backVariants}>
-        <div id="tansition-bg" />
-      </motion.div>
-
       <ScrollContainer id="bio">
         <Header />
         <div className="bio-blurb">
