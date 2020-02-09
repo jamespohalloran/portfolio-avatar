@@ -312,6 +312,10 @@ footer {
   color: black;
 }
 
+.post-preview img {
+  width: 100%;
+}
+
 #main-content {
   padding: 0px 8vmin 4vmin;
 }
