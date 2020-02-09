@@ -4,30 +4,15 @@ import "../static/css/avatar.css";
 import { ReactComponent as Mailbox } from "../static/mailbox.svg";
 import anime from "animejs";
 import { motion } from "framer-motion";
-import { ScrollContainer } from "../helpers/ScrollContainer";
 import { Header } from "./layout/Header";
-let easing = [0.175, 0.85, 0.42, 0.96];
-const backVariants = {
-  exit: {
-    // x: 100,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: easing
-    }
-  },
-  enter: {
-    // x: 0,
-    opacity: 0,
-    transition: {
-      delay: 0,
-      duration: 0.5,
-      ease: easing
-    }
-  }
-};
+import FadeWrapper from "../helpers/FadeWrapper";
 
-const Contact: React.FC = () => {
+interface Props {
+  pathName: string;
+}
+
+export default function Contact({ pathName }: Props) {
+  console.log(`slug ${pathName}`);
   useEffect(() => {
     anime({
       targets: document.querySelectorAll(`#mailbox *`),
@@ -49,30 +34,35 @@ const Contact: React.FC = () => {
   }, []);
 
   return (
-    <motion.div initial="exit" animate="enter" exit="exit">
-      <motion.div variants={backVariants}>
-        <div id="tansition-bg" />
-      </motion.div>
-      <ScrollContainer id="portfolio">
+    <motion.div animate="enter" exit="exit">
+      <div id="portfolio">
         <Header />
-        <Mailbox id="mailbox" />
-        <div className="portfolio-inner">
-          <h2>Contact Me</h2>
-          <div className="contact-form">
-            <div>
-              <label>Name</label>
-              <input name="name" type="text" />
-              <label>Email</label>
-              <input name="email" type="email" />
-              <label>Message</label>
-              <textarea name="message" rows={5} />
+        <FadeWrapper fadeIn>
+          <Mailbox id="mailbox" />
+          <div className="portfolio-inner">
+            <h2>Contact Me</h2>
+            <div className="contact-form boxed-content">
+              <div>
+                <label>Name</label>
+                <input name="name" type="text" />
+                <label>Email</label>
+                <input name="email" type="email" />
+                <label>Message</label>
+                <textarea name="message" rows={5} />
+              </div>
             </div>
           </div>
-        </div>
-      </ScrollContainer>
+        </FadeWrapper>
+      </div>
       <footer></footer>
     </motion.div>
   );
-};
+}
 
-export default Contact;
+Contact.getInitialProps = async function(ctx: any) {
+  console.log(`slug! ${JSON.stringify(ctx.pathname)}`);
+
+  return {
+    pathName: ctx.pathname
+  };
+};

@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import "../static/css/App.css";
 import "../static/css/avatar.css";
 import { ReactComponent as Avatar } from "../static/avatar.svg";
-import { ReactComponent as LighthouseBG } from "../static/lighthouse.svg";
-import { ReactComponent as Mailbox } from "../static/mailbox.svg";
 import anime from "animejs";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ScrollContainer } from "../helpers/ScrollContainer";
 import { Header } from "./layout/Header";
+import FadeWrapper from "../helpers/FadeWrapper";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
@@ -78,27 +76,6 @@ const rotateTo = (state: AvatarState) => {
   });
 };
 
-let easing = [0.175, 0.85, 0.42, 0.96];
-const backVariants = {
-  exit: {
-    // x: 100,
-    backgroundColor: "rgba(0, 0, 0, 1)",
-    transition: {
-      duration: 0.5,
-      ease: easing
-    }
-  },
-  enter: {
-    // x: 0,
-    backgroundColor: "rgba(0, 0, 0, 0)",
-    transition: {
-      delay: 0,
-      duration: 0.5,
-      ease: easing
-    }
-  }
-};
-
 const Homepage: React.FC = () => {
   const [avatarState, setAvatarState] = useState<AVATAR_STATE_ID>("Head-ref");
 
@@ -122,46 +99,49 @@ const Homepage: React.FC = () => {
   }, [avatarState]);
 
   return (
-    <motion.div initial="exit" animate="enter" exit="exit">
-      <motion.div id="tansition-bg" variants={backVariants}></motion.div>
-      <ScrollContainer className="App">
+    <motion.div animate="enter" exit="exit">
+      <div className="App">
         <Header showNav={false} />
         <div>
           <header className="App-header">
-            <Avatar id="avatar" />
-            <div id="hero-links">
-              <Link href="/about">
+            <FadeWrapper fadeIn>
+              <Avatar id="avatar" />
+              <div id="hero-links">
+                <Link href="/about">
+                  <a
+                    className={avatarState == "Head-ref" ? "highlighted" : ""}
+                    onMouseOver={() => {
+                      setAvatarState("Head-ref");
+                    }}
+                  >
+                    About Me
+                  </a>
+                </Link>
+                <Link href="/posts">
+                  <a
+                    className={avatarState == "Speech-ref" ? "highlighted" : ""}
+                    onMouseOver={() => {
+                      setAvatarState("Speech-ref");
+                    }}
+                  >
+                    Blog
+                  </a>
+                </Link>
                 <a
-                  className={avatarState == "Head-ref" ? "highlighted" : ""}
+                  className={
+                    avatarState == "Videogames-ref" ? "highlighted" : ""
+                  }
                   onMouseOver={() => {
-                    setAvatarState("Head-ref");
+                    setAvatarState("Videogames-ref");
                   }}
                 >
-                  About Me
+                  Projects
                 </a>
-              </Link>
-              <Link href="/posts">
-                <a
-                  className={avatarState == "Speech-ref" ? "highlighted" : ""}
-                  onMouseOver={() => {
-                    setAvatarState("Speech-ref");
-                  }}
-                >
-                  Blog
-                </a>
-              </Link>
-              <a
-                className={avatarState == "Videogames-ref" ? "highlighted" : ""}
-                onMouseOver={() => {
-                  setAvatarState("Videogames-ref");
-                }}
-              >
-                Projects
-              </a>
-            </div>
+              </div>
+            </FadeWrapper>
           </header>
         </div>
-      </ScrollContainer>
+      </div>
 
       <footer></footer>
     </motion.div>

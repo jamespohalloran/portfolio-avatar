@@ -7,39 +7,36 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import FadeWrapper from "../helpers/FadeWrapper";
 
 export default function Posts({ posts }: any) {
   return (
-    <div id="posts" className="colored-sky">
-      <Header />
-      <div id="main-content">
-        <h1>Blog</h1>
-        {(posts || []).map((p: any) => (
-          <PostPreview {...p} />
-        ))}
+    <motion.div initial="exit" animate="enter" exit="exit">
+      <div id="posts">
+        <Header />
+        <FadeWrapper>
+          <div id="main-content">
+            <h1>Blog</h1>
+            {(posts || []).map((p: any) => (
+              <PostPreview {...p} />
+            ))}
+          </div>
+        </FadeWrapper>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-const backVariants = {
-  exit: {},
-  enter: {}
-};
-
 const PostPreview = ({ post, slug }: any) => (
-  <motion.div initial="exit" animate="enter" exit="exit">
-    <motion.div variants={backVariants}></motion.div>{" "}
-    <div className="post-preview">
-      <h2>{post.data.title}</h2>
-      <ReactMarkdown source={post.content} />{" "}
-      <span>
-        <Link href={`/blog/${slug}`}>
-          <a>(read more)</a>
-        </Link>
-      </span>
-    </div>
-  </motion.div>
+  <div className="post-preview">
+    <h2>{post.data.title}</h2>
+    <ReactMarkdown source={post.content} />{" "}
+    <span>
+      <Link href={`/blog/[slug]`} as={`/blog/${slug}`}>
+        <a>(read more)</a>
+      </Link>
+    </span>
+  </div>
 );
 
 Posts.getInitialProps = async function(context: any) {

@@ -4,30 +4,11 @@ import "../static/css/avatar.css";
 import { ReactComponent as LighthouseBG } from "../static/lighthouse.svg";
 import anime from "animejs";
 import { motion } from "framer-motion";
-import { ScrollContainer } from "../helpers/ScrollContainer";
 import Link from "next/link";
 import { Header } from "./layout/Header";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
-
-let easing = [0.175, 0.85, 0.42, 0.96];
-const backVariants = {
-  exit: {
-    backgroundColor: "rgba(0, 0, 0, 1)",
-    transition: {
-      duration: 0.5,
-      ease: easing
-    }
-  },
-  enter: {
-    backgroundColor: "rgba(0, 0, 0, 0)",
-    transition: {
-      delay: 0,
-      duration: 0.5,
-      ease: easing
-    }
-  }
-};
+import FadeWrapper from "../helpers/FadeWrapper";
 
 export default function About(props: any) {
   useEffect(() => {
@@ -50,14 +31,7 @@ export default function About(props: any) {
       fillOpacity: 1,
       easing: "easeInOutSine",
       complete: function() {
-        anime({
-          targets: "#bio",
-          // left: "240px",
-          duration: 2000,
-          backgroundColor: "rgba(255, 209, 140, 0.42)",
-
-          easing: "easeInOutSine"
-        });
+        document.body.setAttribute("bg-state", "bright");
 
         const sunEl = document.querySelector(`#bio #sun`);
         if (sunEl) {
@@ -69,14 +43,12 @@ export default function About(props: any) {
           easing: "easeInOutSine",
           cy: "-70"
         });
-        console.log("bio svg");
-        anime({
-          targets: "#bio svg",
-          duration: 4000,
-          stroke: "#000"
-        });
       }
     });
+
+    return () => {
+      document.body.setAttribute("bg-state", "light");
+    };
   }, []);
 
   const markdownBody = props.content;
@@ -84,23 +56,23 @@ export default function About(props: any) {
 
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
-      <motion.div variants={backVariants}>
-        <div id="tansition-bg" />
-      </motion.div>
-
-      <ScrollContainer id="bio">
+      <div id="bio">
         <Header />
-        <div className="bio-blurb">
-          <h2>{frontmatter.title}</h2>
-          <ReactMarkdown source={markdownBody} />
-          <span className="contact-btn">
-            <Link href="/contact">
-              <a>{frontmatter.contactButton}</a>
-            </Link>
-          </span>
-        </div>
-        <LighthouseBG className="lighthouse" />
-      </ScrollContainer>
+        <FadeWrapper>
+          <div className="bio-blurb">
+            <h2>{frontmatter.title}</h2>
+            <div className="boxed-content">
+              <ReactMarkdown source={markdownBody} />
+              <Link href="/contact">
+                <div className="contact-btn">
+                  <a>{frontmatter.contactButton}</a>
+                </div>
+              </Link>
+            </div>
+          </div>
+          <LighthouseBG className="lighthouse" />
+        </FadeWrapper>
+      </div>
       <footer></footer>
     </motion.div>
   );
