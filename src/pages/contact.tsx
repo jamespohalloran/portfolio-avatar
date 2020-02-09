@@ -38,8 +38,8 @@ export default function Contact({ pathName }: Props) {
     <motion.div animate="enter" exit="exit">
       <ScrollContainer id="portfolio">
         <Header />
-        <Mailbox id="mailbox" />
-        <FadeWrapper>
+        <FadeWrapper fadeIn>
+          <Mailbox id="mailbox" />
           <div className="portfolio-inner">
             <h2>Contact Me</h2>
             <div className="contact-form boxed-content">
