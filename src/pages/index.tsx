@@ -7,7 +7,6 @@ import { ReactComponent as Mailbox } from "../static/mailbox.svg";
 import anime from "animejs";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ScrollContainer } from "../helpers/ScrollContainer";
 import { Header } from "./layout/Header";
 import FadeWrapper from "../helpers/FadeWrapper";
 
@@ -119,7 +118,7 @@ const Homepage: React.FC = () => {
 
   return (
     <motion.div animate="enter" exit="exit">
-      <ScrollContainer className="App">
+      <div className="App">
         <Header showNav={false} />
         <div>
           <header className="App-header">
@@ -160,7 +159,7 @@ const Homepage: React.FC = () => {
             </FadeWrapper>
           </header>
         </div>
-      </ScrollContainer>
+      </div>
 
       <footer></footer>
     </motion.div>

@@ -180,8 +180,9 @@ svg.lighthouse path {
   overflow: visible;
 }
 
-#bio.activated svg {
+#bio svg {
   stroke-width: 1;
+  pointer-events: none;
 }
 
 #bio svg rect,
@@ -270,7 +271,7 @@ footer {
   stroke-width: 0;
 }
 
-.activated #mailbox {
+#mailbox {
   stroke-width: 1;
 }
 

@@ -4,7 +4,6 @@ import "../static/css/avatar.css";
 import { ReactComponent as LighthouseBG } from "../static/lighthouse.svg";
 import anime from "animejs";
 import { motion } from "framer-motion";
-import { ScrollContainer } from "../helpers/ScrollContainer";
 import Link from "next/link";
 import { Header } from "./layout/Header";
 import matter from "gray-matter";
@@ -57,24 +56,24 @@ export default function About(props: any) {
 
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
-      <ScrollContainer id="bio">
+      <div id="bio">
         <Header />
         <FadeWrapper>
           <div className="bio-blurb">
             <h2>{frontmatter.title}</h2>
             <div className="boxed-content">
               <ReactMarkdown source={markdownBody} />
-              <div className="contact-btn">
-                <Link href="/contact">
+              <Link href="/contact">
+                <div className="contact-btn">
                   <a>{frontmatter.contactButton}</a>
-                </Link>
-              </div>
+                </div>
+              </Link>
             </div>
           </div>
         </FadeWrapper>
 
         <LighthouseBG className="lighthouse" />
-      </ScrollContainer>
+      </div>
       <footer></footer>
     </motion.div>
   );

@@ -4,7 +4,6 @@ import "../static/css/avatar.css";
 import { ReactComponent as Mailbox } from "../static/mailbox.svg";
 import anime from "animejs";
 import { motion } from "framer-motion";
-import { ScrollContainer } from "../helpers/ScrollContainer";
 import { Header } from "./layout/Header";
 import FadeWrapper from "../helpers/FadeWrapper";
 
@@ -36,7 +35,7 @@ export default function Contact({ pathName }: Props) {
 
   return (
     <motion.div animate="enter" exit="exit">
-      <ScrollContainer id="portfolio">
+      <div id="portfolio">
         <Header />
         <FadeWrapper fadeIn>
           <Mailbox id="mailbox" />
@@ -54,7 +53,7 @@ export default function Contact({ pathName }: Props) {
             </div>
           </div>
         </FadeWrapper>
-      </ScrollContainer>
+      </div>
       <footer></footer>
     </motion.div>
   );
