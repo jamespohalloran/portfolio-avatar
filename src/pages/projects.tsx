@@ -14,7 +14,7 @@ export default function Projects({ projects }: any) {
         <Header />
         <FadeWrapper>
           <div id="main-content">
-            <h1>Projects</h1>
+            <h1>Select Projects</h1>
             {(projects || []).map((p: any) => (
               <ProjectPreview {...p} />
             ))}
