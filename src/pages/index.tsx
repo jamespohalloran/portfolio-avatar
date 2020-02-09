@@ -127,16 +127,18 @@ const Homepage: React.FC = () => {
                     Blog
                   </a>
                 </Link>
-                <a
-                  className={
-                    avatarState == "Videogames-ref" ? "highlighted" : ""
-                  }
-                  onMouseOver={() => {
-                    setAvatarState("Videogames-ref");
-                  }}
-                >
-                  Projects
-                </a>
+                <Link href="/projects">
+                  <a
+                    className={
+                      avatarState == "Videogames-ref" ? "highlighted" : ""
+                    }
+                    onMouseOver={() => {
+                      setAvatarState("Videogames-ref");
+                    }}
+                  >
+                    Projects
+                  </a>
+                </Link>
               </div>
             </FadeWrapper>
           </header>
