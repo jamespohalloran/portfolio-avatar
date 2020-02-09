@@ -6,6 +6,7 @@ import anime from "animejs";
 import { motion } from "framer-motion";
 import { Header } from "./layout/Header";
 import FadeWrapper from "../helpers/FadeWrapper";
+import { SocialFooter } from "./layout/SocialFooter";
 
 interface Props {
   pathName: string;
@@ -54,7 +55,9 @@ export default function Contact({ pathName }: Props) {
           </div>
         </FadeWrapper>
       </div>
-      <footer></footer>
+      <footer>
+        <SocialFooter />
+      </footer>
     </motion.div>
   );
 }

@@ -9,6 +9,7 @@ import { Header } from "./layout/Header";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../helpers/FadeWrapper";
+import { SocialFooter } from "./layout/SocialFooter";
 
 export default function About(props: any) {
   useEffect(() => {

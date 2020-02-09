@@ -287,6 +287,10 @@ footer {
   background-color: black;
 }
 
+footer svg {
+  fill: white;
+}
+
 #mailbox {
   position: absolute;
   bottom: 0;
@@ -344,4 +348,21 @@ footer {
 
 #about-intro {
   margin-top: -25px;
+}
+
+#footer-float {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+}
+
+#footer-float svg {
+  height: 30px;
+  width: auto;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#footer-float #mail-icon svg {
+  height: 25px;
 }

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Header } from "./layout/Header";
 import FadeWrapper, { easing } from "../helpers/FadeWrapper";
+import { SocialFooter } from "./layout/SocialFooter";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
@@ -159,6 +160,7 @@ const Homepage: React.FC = () => {
                   </a>
                 </Link>
               </div>
+              <SocialFooter />
             </FadeWrapper>
           </header>
         </div>
