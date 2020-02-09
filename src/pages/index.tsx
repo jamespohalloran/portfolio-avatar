@@ -79,6 +79,7 @@ const rotateTo = (state: AvatarState) => {
 const Homepage: React.FC = () => {
   const [avatarState, setAvatarState] = useState<AVATAR_STATE_ID>("Head-ref");
 
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     face = document.getElementById("avatar") as any;
 
@@ -93,6 +94,7 @@ const Homepage: React.FC = () => {
       direction: "alternate",
       loop: false
     });
+    setIsMobile(window.innerWidth <= 500);
   }, []);
   useEffect(() => {
     rotateTo(AVATAR_STATES.filter(a => a.id == avatarState)[0]);
@@ -110,7 +112,7 @@ const Homepage: React.FC = () => {
                 exit: {
                   opacity: 0,
                   transition: {
-                    duration: 1.5,
+                    duration: isMobile ? 2 : 0.5,
                     ease: easing
                   }
                 }
