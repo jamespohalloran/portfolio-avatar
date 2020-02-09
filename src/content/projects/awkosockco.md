@@ -1,5 +1,5 @@
 ---
-banner: "/miner-meltdown-cover.png"
+banner: "/awko-cover.jpg"
 title: "Awko Sock Co."
 ---
 

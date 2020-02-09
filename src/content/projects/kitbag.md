@@ -1,5 +1,5 @@
 ---
-banner: "/miner-meltdown-cover.png"
+banner: "/kitbag-cover.jpg"
 title: "Kitbag.io"
 ---
 
