@@ -70,9 +70,8 @@ export default function About(props: any) {
               </Link>
             </div>
           </div>
+          <LighthouseBG className="lighthouse" />
         </FadeWrapper>
-
-        <LighthouseBG className="lighthouse" />
       </div>
       <footer></footer>
     </motion.div>

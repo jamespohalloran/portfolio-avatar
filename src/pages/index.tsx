@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../static/css/App.css";
 import "../static/css/avatar.css";
 import { ReactComponent as Avatar } from "../static/avatar.svg";
-import { ReactComponent as LighthouseBG } from "../static/lighthouse.svg";
-import { ReactComponent as Mailbox } from "../static/mailbox.svg";
 import anime from "animejs";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -76,22 +74,6 @@ const rotateTo = (state: AvatarState) => {
       ]
     });
   });
-};
-
-let easing = [0.175, 0.85, 0.42, 0.96];
-const avatarVariants = {
-  exit: {
-    // x: 100,
-    opacity: 0,
-    transition: {
-      duration: 0.5,
-      ease: easing
-    }
-  },
-  enter: {
-    // x: 0,
-    opacity: 1
-  }
 };
 
 const Homepage: React.FC = () => {
