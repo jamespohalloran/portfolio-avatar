@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-let easing = [0.175, 0.85, 0.42, 0.96];
-const backVariants = {
+export let easing = [0.175, 0.85, 0.42, 0.96];
+export const backVariants = {
   exit: {
     opacity: 0,
     transition: {
@@ -23,11 +23,15 @@ const backVariants = {
 interface Props {
   children: any;
   fadeIn?: boolean;
+  overrides?: any;
 }
 
-const FadeWrapper = ({ children, fadeIn = true }: Props) => {
+const FadeWrapper = ({ children, overrides, fadeIn = true }: Props) => {
   return (
-    <motion.div initial={fadeIn ? "exit" : "enter"} variants={backVariants}>
+    <motion.div
+      initial={fadeIn ? "exit" : "enter"}
+      variants={{ ...backVariants, ...overrides }}
+    >
       {children}
     </motion.div>
   );

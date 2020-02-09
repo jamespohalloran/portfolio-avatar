@@ -6,7 +6,7 @@ import anime from "animejs";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Header } from "./layout/Header";
-import FadeWrapper from "../helpers/FadeWrapper";
+import FadeWrapper, { easing } from "../helpers/FadeWrapper";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
@@ -104,7 +104,18 @@ const Homepage: React.FC = () => {
         <Header showNav={false} />
         <div>
           <header className="App-header">
-            <FadeWrapper fadeIn>
+            <FadeWrapper
+              fadeIn
+              overrides={{
+                exit: {
+                  opacity: 0,
+                  transition: {
+                    duration: 1.5,
+                    ease: easing
+                  }
+                }
+              }}
+            >
               <div id="about-intro">
                 <h1>
                   Hey! I'm James O'Halloran, <br />a software developer from
