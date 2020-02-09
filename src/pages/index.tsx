@@ -105,6 +105,12 @@ const Homepage: React.FC = () => {
         <div>
           <header className="App-header">
             <FadeWrapper fadeIn>
+              <div id="about-intro">
+                <h2>
+                  Hey! I'm James O'Halloran, <br />a software developer from
+                  PEI, Canada
+                </h2>
+              </div>
               <Avatar id="avatar" />
               <div id="hero-links">
                 <Link href="/about">
