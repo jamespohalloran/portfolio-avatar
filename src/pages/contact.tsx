@@ -4,16 +4,11 @@ import "../static/css/avatar.css";
 import { ReactComponent as Mailbox } from "../static/mailbox.svg";
 import anime from "animejs";
 import { motion } from "framer-motion";
-import { Header } from "./layout/Header";
+import Header from "./layout/Header";
 import FadeWrapper from "../helpers/FadeWrapper";
-import { SocialFooter } from "./layout/SocialFooter";
+import SocialFooter from "./layout/SocialFooter";
 
-interface Props {
-  pathName: string;
-}
-
-export default function Contact({ pathName }: Props) {
-  console.log(`slug ${pathName}`);
+export default function Contact() {
   useEffect(() => {
     anime({
       targets: document.querySelectorAll(`#mailbox *`),
@@ -61,11 +56,3 @@ export default function Contact({ pathName }: Props) {
     </motion.div>
   );
 }
-
-Contact.getInitialProps = async function(ctx: any) {
-  console.log(`slug! ${JSON.stringify(ctx.pathname)}`);
-
-  return {
-    pathName: ctx.pathname
-  };
-};

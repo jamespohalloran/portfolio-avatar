@@ -5,7 +5,7 @@ interface Props {
   showNav?: boolean;
 }
 
-export const Header = ({ showNav = true }: Props) => {
+const Header = ({ showNav = true }: Props) => {
   return (
     <div id="header">
       <div id="logo">
@@ -29,3 +29,5 @@ export const Header = ({ showNav = true }: Props) => {
     </div>
   );
 };
+
+export default Header;

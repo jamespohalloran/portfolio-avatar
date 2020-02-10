@@ -18,6 +18,7 @@ module.exports = withCSS({
           "url-loader"
         ]
       },
+
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         use: [
@@ -47,6 +48,10 @@ module.exports = withCSS({
         ]
       }
     );
+
+    config.node = {
+      fs: "empty"
+    };
 
     config.module.rules.push({
       test: /\.md$/,

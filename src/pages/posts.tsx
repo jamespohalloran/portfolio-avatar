@@ -1,8 +1,7 @@
 import React from "react";
 import "../static/css/App.css";
 import "../static/css/avatar.css";
-import { ReactComponent as LighthouseBG } from "../../static/lighthouse-flat.svg";
-import { Header } from "./layout/Header";
+import Header from "./layout/Header";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import matter from "gray-matter";
@@ -39,7 +38,7 @@ const PostPreview = ({ post, slug }: any) => (
   </div>
 );
 
-Posts.getInitialProps = async function(context: any) {
+export async function unstable_getStaticProps() {
   // get all blog data for list
   const posts = (context => {
     const keys = context.keys();
@@ -67,7 +66,9 @@ Posts.getInitialProps = async function(context: any) {
   })((require as any).context("../content/posts", true, /\.md$/));
 
   return {
-    fileRelativePath: `src/data/config.json`,
-    posts
+    props: {
+      fileRelativePath: `src/data/config.json`,
+      posts
+    }
   };
-};
+}

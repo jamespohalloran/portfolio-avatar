@@ -5,9 +5,9 @@ import { ReactComponent as Avatar } from "../static/avatar.svg";
 import anime from "animejs";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Header } from "./layout/Header";
+import Header from "./layout/Header";
 import FadeWrapper, { easing } from "../helpers/FadeWrapper";
-import { SocialFooter } from "./layout/SocialFooter";
+import SocialFooter from "./layout/SocialFooter";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
@@ -51,9 +51,8 @@ const rotateTo = (state: AvatarState) => {
     duration: 2000
   });
 
-  const rectElements = document.querySelectorAll(
-    `#${state.id} rect, #${state.id} path`
-  );
+  const rectElements =
+    document.querySelectorAll(`#${state.id} rect, #${state.id} path`) || [];
 
   if (state.effects) {
     state.effects();

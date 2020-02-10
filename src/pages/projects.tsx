@@ -1,7 +1,7 @@
 import React from "react";
 import "../static/css/App.css";
 import "../static/css/avatar.css";
-import { Header } from "./layout/Header";
+import Header from "./layout/Header";
 import { motion } from "framer-motion";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
@@ -33,7 +33,7 @@ const ProjectPreview = ({ project }: any) => (
   </div>
 );
 
-Projects.getInitialProps = async function(context: any) {
+export async function unstable_getStaticProps() {
   // get all blog data for list
   const projects = (context => {
     const keys = context.keys();
@@ -50,7 +50,9 @@ Projects.getInitialProps = async function(context: any) {
   })((require as any).context("../content/projects", true, /\.md$/));
 
   return {
-    fileRelativePath: `src/data/config.json`,
-    projects
+    props: {
+      fileRelativePath: `src/data/config.json`,
+      projects
+    }
   };
-};
+}

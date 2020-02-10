@@ -5,11 +5,10 @@ import { ReactComponent as LighthouseBG } from "../static/lighthouse.svg";
 import anime from "animejs";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Header } from "./layout/Header";
+import Header from "./layout/Header";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../helpers/FadeWrapper";
-import { SocialFooter } from "./layout/SocialFooter";
 
 export default function About(props: any) {
   useEffect(() => {
@@ -79,12 +78,13 @@ export default function About(props: any) {
   );
 }
 
-About.getInitialProps = async function(context: any) {
-  // const content = await import("./../content/posts/");
+export async function unstable_getStaticProps() {
   const content = await require(`../content/about.md`);
 
   const data = matter(content.default);
   return {
-    ...data
+    props: {
+      ...data
+    }
   };
-};
+}

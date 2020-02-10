@@ -3,10 +3,11 @@ import "../../static/css/App.css";
 import "../../static/css/avatar.css";
 import { ReactComponent as LighthouseBG } from "../../static/lighthouse-flat.svg";
 import { motion } from "framer-motion";
-import { Header } from "../layout/Header";
+import Header from "../layout/Header";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../../helpers/FadeWrapper";
+var path = require("path");
 
 interface Props {
   content: string;
@@ -35,14 +36,36 @@ export default function Post(props: Props) {
   );
 }
 
-Post.getInitialProps = async function(context: any) {
-  const { slug } = context.query;
-  const content = await import(
-    `../../content/posts/${decodeURIComponent(slug)}.md`
-  );
+export async function unstable_getStaticPaths() {
+  const fg = require("fast-glob");
+  const fullPath = path.resolve("src/content/posts/**/*.md");
+  const blogs = await fg(fullPath);
 
-  const data = matter(content.default);
+  return blogs.map((file: string) => {
+    const slug = file
+      .split("/posts/")[1]
+      .replace(/ /g, "-")
+      .slice(0, -3)
+      .trim();
+
+    return { params: { slug } };
+  });
+}
+
+export async function unstable_getStaticProps(context: any) {
+  var fs = require("fs");
+  const { slug } = context.params;
+
+  const fullPath = path.resolve(
+    "src/content/posts",
+    `${decodeURIComponent(slug)}.md`
+  );
+  const file = fs.readFileSync(fullPath);
+  const data = matter(file);
+
   return {
-    ...data
+    props: {
+      ...data
+    }
   };
-};
+}
