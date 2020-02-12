@@ -45,7 +45,7 @@ h2 {
 }
 
 .App-header {
-  min-height: calc(100vh - 44px);
+  min-height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -170,13 +170,13 @@ html {
 } */
 
 #portfolio {
-  height: calc(100vh - 200px - 1px); /**subtract footer*/
+  height: calc(100vh - 200px); /**subtract footer*/
   position: relative;
 }
 
 #bio {
   color: black;
-  height: calc(100vh - 1px);
+  height: calc(100vh);
   /* background-color: rgb(0, 0, 0); */
 }
 
@@ -352,6 +352,12 @@ footer#footer-dark svg {
 
 #about-intro {
   margin-top: -25px;
+}
+
+@media only screen and (max-width: 500px) {
+  #about-intro {
+    margin-top: -140px;
+  }
 }
 
 #footer-float {

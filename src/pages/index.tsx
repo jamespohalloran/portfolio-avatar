@@ -164,8 +164,6 @@ const Homepage: React.FC = () => {
           </header>
         </div>
       </div>
-
-      <footer></footer>
     </motion.div>
   );
 };
