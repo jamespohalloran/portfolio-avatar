@@ -23,6 +23,7 @@ class MyApp extends App {
     return (
       <>
         <Head>
+          <link rel="shortcut icon" href="/favicon/favicon.ico" />
           <link
             href="https://fonts.googleapis.com/css?family=Barlow+Condensed:400,700&display=swap"
             rel="stylesheet"
