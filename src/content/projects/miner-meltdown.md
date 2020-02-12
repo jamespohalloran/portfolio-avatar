@@ -1,5 +1,5 @@
 ---
-banner: "/miner-meltdown-cover.png"
+banner: "/miner-meltdown-cover.jpg"
 title: "Miner Meltdown"
 ---
 
