@@ -50,7 +50,7 @@ export default function Contact() {
           </div>
         </FadeWrapper>
       </div>
-      <footer>
+      <footer id="footer-dark">
         <SocialFooter />
       </footer>
     </motion.div>

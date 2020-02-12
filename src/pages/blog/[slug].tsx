@@ -29,6 +29,7 @@ export default function Post(props: Props) {
           <LighthouseBG className="lighthouse" />
           <div className="post-content">
             <ReactMarkdown source={markdownBody} />
+            <footer />
           </div>
         </FadeWrapper>
       </div>

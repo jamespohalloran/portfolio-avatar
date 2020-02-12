@@ -21,6 +21,7 @@ export default function Projects({ projects }: any) {
           </div>
         </FadeWrapper>
       </div>
+      <footer />
     </motion.div>
   );
 }

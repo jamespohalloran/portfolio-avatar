@@ -78,7 +78,6 @@ export default function About(props: any) {
           <LighthouseBG className="lighthouse" />
         </FadeWrapper>
       </div>
-      <footer></footer>
     </motion.div>
   );
 }

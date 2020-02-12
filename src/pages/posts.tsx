@@ -22,6 +22,7 @@ export default function Posts({ posts }: any) {
           </div>
         </FadeWrapper>
       </div>
+      <footer />
     </motion.div>
   );
 }

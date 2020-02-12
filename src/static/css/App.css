@@ -283,11 +283,15 @@ svg.lighthouse path {
 }
 
 footer {
+  min-height: 40px;
+}
+
+footer#footer-dark {
   min-height: 200px;
   background-color: black;
 }
 
-footer svg {
+footer#footer-dark svg {
   fill: white;
 }
 
