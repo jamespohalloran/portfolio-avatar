@@ -12,7 +12,7 @@ import FadeWrapper from "../helpers/FadeWrapper";
 
 export default function About(props: any) {
   useEffect(() => {
-    anime({
+    const outlineAnim = anime({
       targets: document.querySelectorAll(`#bio svg *:not(ellipse)`),
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: "easeInOutSine",
@@ -20,11 +20,10 @@ export default function About(props: any) {
       delay: function(el, i) {
         return i * 150;
       },
-      complete: function() {},
       direction: "alternate",
       loop: false
     });
-    anime({
+    const detailsAnim = anime({
       targets: "#bio path",
       // left: "240px",
       duration: 2000,
@@ -47,6 +46,12 @@ export default function About(props: any) {
     });
 
     return () => {
+      if (outlineAnim) {
+        outlineAnim.pause();
+      }
+      if (detailsAnim) {
+        detailsAnim.pause();
+      }
       document.body.setAttribute("bg-state", "light");
     };
   }, []);
