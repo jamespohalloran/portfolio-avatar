@@ -11,3 +11,14 @@ export function formatExcerpt(content: string) {
 
   return `${plainTextExcerpt}...`;
 }
+
+export function formatDate(fullDate: string) {
+  const date = new Date(fullDate);
+  const dateOptions = {
+    formatMatcher: "best fit",
+    month: "long",
+    year: "numeric",
+    day: "numeric"
+  };
+  return date.toLocaleDateString("en-US", dateOptions);
+}

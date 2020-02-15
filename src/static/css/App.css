@@ -367,6 +367,11 @@ footer#footer-dark svg {
   padding: 0px 8vmin 4vmin;
 }
 
+.content-inner {
+  max-width: 768px;
+  margin: 0px auto;
+}
+
 #about-intro {
   margin-top: -25px;
 }

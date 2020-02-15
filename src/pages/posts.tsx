@@ -8,7 +8,7 @@ import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../helpers/FadeWrapper";
 import { NextSeo } from "next-seo";
-import { formatExcerpt } from "../helpers/markdownUtils";
+import { formatExcerpt, formatDate } from "../helpers/markdownUtils";
 
 export default function Posts({ posts }: any) {
   return (
@@ -33,6 +33,7 @@ export default function Posts({ posts }: any) {
 const PostPreview = ({ post, slug }: any) => (
   <div className="post-preview">
     <h2>{post.data.title}</h2>
+    <p>{formatDate(post.data.date)}</p>
     <ReactMarkdown source={post.content} />{" "}
     <span>
       <Link href={`/blog/[slug]`} as={`/blog/${slug}`}>

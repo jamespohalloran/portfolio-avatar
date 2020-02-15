@@ -8,7 +8,7 @@ import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../../helpers/FadeWrapper";
 import { NextSeo } from "next-seo";
-import { formatExcerpt } from "../../helpers/markdownUtils";
+import { formatExcerpt, formatDate } from "../../helpers/markdownUtils";
 var path = require("path");
 
 interface Props {
@@ -34,7 +34,10 @@ export default function Post(props: Props) {
           </div>
           <LighthouseBG className="lighthouse" />
           <div className="post-content">
-            <ReactMarkdown source={markdownBody} />
+            <div className="content-inner">
+              <p>{formatDate(frontmatter.date)}</p>
+              <ReactMarkdown source={markdownBody} />
+            </div>
             <footer />
           </div>
         </FadeWrapper>
