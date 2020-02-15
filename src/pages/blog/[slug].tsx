@@ -8,6 +8,7 @@ import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../../helpers/FadeWrapper";
 import { NextSeo } from "next-seo";
+import { formatExcerpt } from "../../helpers/markdownUtils";
 var path = require("path");
 
 interface Props {
@@ -21,7 +22,10 @@ export default function Post(props: Props) {
 
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
-      <NextSeo title={frontmatter.title} />
+      <NextSeo
+        title={frontmatter.title}
+        description={formatExcerpt(markdownBody)}
+      />
       <div id="post">
         <Header />
         <FadeWrapper>

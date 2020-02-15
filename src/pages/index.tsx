@@ -104,6 +104,7 @@ const Homepage: React.FC = () => {
 
   return (
     <motion.div animate="enter" exit="exit">
+      <NextSeo title={"Blog"} titleTemplate={siteData.title} />
       <div className="App">
         <Header showNav={false} />
         <div>

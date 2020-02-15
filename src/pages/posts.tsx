@@ -8,6 +8,7 @@ import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../helpers/FadeWrapper";
 import { NextSeo } from "next-seo";
+import { formatExcerpt } from "../helpers/markdownUtils";
 
 export default function Posts({ posts }: any) {
   return (
@@ -60,7 +61,7 @@ export async function unstable_getStaticProps() {
       return {
         post: {
           ...post,
-          content: post.content.substring(0, 300)
+          content: formatExcerpt(post.content)
         },
         slug
       };
