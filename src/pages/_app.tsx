@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Head from "next/head";
 import siteData from "../content/siteMeta.json";
 import { DefaultSeo } from "next-seo";
-
+import TagManager from "react-gtm-module";
 import Router from "next/router";
 import { initialPageStates } from "../helpers/pageStates";
 
@@ -19,6 +19,14 @@ const handleRouteChange = (url: string) => {
 Router.events.on("routeChangeStart", handleRouteChange);
 
 class MyApp extends App {
+  componentDidMount() {
+    if (process.env.NODE_ENV === "production") {
+      TagManager.initialize({
+        gtmId: "GTM-P47DQN9"
+      });
+    }
+  }
+
   render() {
     const { Component, pageProps, router } = this.props;
 
