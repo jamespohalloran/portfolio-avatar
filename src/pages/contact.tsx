@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Header from "./layout/Header";
 import FadeWrapper from "../helpers/FadeWrapper";
 import SocialFooter from "./layout/SocialFooter";
+import { NextSeo } from "next-seo";
 
 export default function Contact() {
   useEffect(() => {
@@ -31,6 +32,7 @@ export default function Contact() {
 
   return (
     <motion.div animate="enter" exit="exit">
+      <NextSeo title={"Contact Me"} />
       <div id="portfolio">
         <Header />
         <FadeWrapper fadeIn>

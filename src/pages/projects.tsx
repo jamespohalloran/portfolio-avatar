@@ -6,10 +6,12 @@ import { motion } from "framer-motion";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../helpers/FadeWrapper";
+import { NextSeo } from "next-seo";
 
 export default function Projects({ projects }: any) {
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
+      <NextSeo title={"Projects"} />
       <div id="projects">
         <Header />
         <FadeWrapper>

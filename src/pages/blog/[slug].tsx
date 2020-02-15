@@ -7,6 +7,7 @@ import Header from "../layout/Header";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../../helpers/FadeWrapper";
+import { NextSeo } from "next-seo";
 var path = require("path");
 
 interface Props {
@@ -20,6 +21,7 @@ export default function Post(props: Props) {
 
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
+      <NextSeo title={frontmatter.title} />
       <div id="post">
         <Header />
         <FadeWrapper>

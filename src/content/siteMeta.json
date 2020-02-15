@@ -1,0 +1,11 @@
+{
+  "title": "James O'Halloran - Full stack Software Developer",
+  "seoDefaultTitle": "Portfolio",
+  "description": "James is a software developer from PEI, Canada, working on making web development extra awesome.",
+  "siteUrl": "https://jamesohalloran.ca",
+  "keywords": "software developer, react, javascript, portfolio, developer blog",
+  "social": {
+    "twitterHandle": "@jamespohalloran",
+    "twitter": "https://twitter.com/jamespohalloran"
+  }
+}

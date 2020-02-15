@@ -9,6 +9,7 @@ import Header from "./layout/Header";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../helpers/FadeWrapper";
+import { NextSeo } from "next-seo";
 
 export default function About(props: any) {
   useEffect(() => {
@@ -61,6 +62,7 @@ export default function About(props: any) {
 
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
+      <NextSeo title={"About Me"} />
       <div id="bio">
         <Header />
         <FadeWrapper>

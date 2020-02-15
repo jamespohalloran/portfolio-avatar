@@ -8,6 +8,8 @@ import { motion } from "framer-motion";
 import Header from "./layout/Header";
 import FadeWrapper, { easing } from "../helpers/FadeWrapper";
 import SocialFooter from "./layout/SocialFooter";
+import { NextSeo } from "next-seo";
+import siteData from "../content/siteMeta.json";
 
 type AVATAR_STATE_ID = "Head-ref" | "Speech-ref" | "Videogames-ref";
 interface AvatarState {
