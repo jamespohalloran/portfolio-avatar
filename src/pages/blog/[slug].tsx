@@ -30,7 +30,7 @@ export default function Post(props: Props) {
         <Header />
         <FadeWrapper>
           <div className="bio-blurb">
-            <h2>{frontmatter.title}</h2>
+            <h1>{frontmatter.title}</h1>
           </div>
           <LighthouseBG className="lighthouse" />
           <div className="post-content">

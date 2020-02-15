@@ -3,8 +3,8 @@ title: "About"
 contactButton: "Contact Me"
 ---
 
-James O'Halloran is a software developer from Prince Edward Island,
-Canada. James created the video game Miner Meltdown, and now spends
+Hey! I'm James O'Halloran, a software developer from Prince Edward Island,
+Canada. I created the video game "Miner Meltdown", and now spend
 most of his time making tools to make web development extra awesome.
-He has over 10 years of experience working as a developer. Oh! and
-he also runs the sock company, awkosock.com, with his lovely wife!
+I have over ten years of experience working as a developer. Oh! and
+me and my lovely wife run the sock company, awkosock.com!

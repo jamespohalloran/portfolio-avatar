@@ -8,6 +8,10 @@
   text-align: center;
 }
 
+p {
+  font-size: 1.2em;
+}
+
 h2 {
   margin-top: 0;
 }
