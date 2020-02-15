@@ -37,7 +37,12 @@ export default function Contact() {
         <Header />
         <FadeWrapper fadeIn>
           <Mailbox id="mailbox" />
-          <div className="portfolio-inner">
+          <form
+            className="portfolio-inner"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+          >
             <h2>Contact Me</h2>
             <div className="contact-form boxed-content">
               <div>
@@ -47,9 +52,10 @@ export default function Contact() {
                 <input name="email" type="email" />
                 <label>Message</label>
                 <textarea name="message" rows={5} />
+                <button type="submit">Send</button>
               </div>
             </div>
-          </div>
+          </form>
         </FadeWrapper>
       </div>
       <footer id="footer-dark">
