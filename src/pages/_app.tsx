@@ -43,7 +43,7 @@ class MyApp extends App {
             site_name: siteData.title,
             images: [
               {
-                url: "https://johalloran.dev/images/social-share.png",
+                url: "https://johalloran.dev/img/social-share.png",
                 width: 1200,
                 height: 628,
                 alt: `James O'Halloran`
