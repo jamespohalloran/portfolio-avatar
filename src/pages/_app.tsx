@@ -43,10 +43,10 @@ class MyApp extends App {
             site_name: siteData.title,
             images: [
               {
-                url: "https://tinacms.org/img/tina-twitter-share.png",
+                url: "https://johalloran.dev/images/social-share.png",
                 width: 1200,
                 height: 628,
-                alt: `TinaCMS`
+                alt: `James O'Halloran`
               }
             ]
           }}

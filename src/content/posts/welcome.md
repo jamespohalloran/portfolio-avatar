@@ -1,5 +1,5 @@
 ---
-date: "2020-02-17T07:00:00.000Z"
+date: "2020-02-16T07:00:00.000Z"
 title: "Welcome to johalloran.dev!"
 ---
 
