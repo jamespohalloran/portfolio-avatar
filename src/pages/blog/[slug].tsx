@@ -28,7 +28,15 @@ export default function Post(props: Props) {
         description={excerpt}
         openGraph={{
           title: frontmatter.title,
-          description: excerpt
+          description: excerpt,
+          images: [
+            {
+              url: "https://johalloran.dev/img/SelfAvatar307.jpg",
+              width: 614,
+              height: 307,
+              alt: `James O'Halloran`
+            }
+          ]
         }}
       />
       <div id="post">
