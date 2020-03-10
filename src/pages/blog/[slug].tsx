@@ -29,13 +29,12 @@ export default function Post(props: Props) {
       <div id="post">
         <Header />
         <FadeWrapper>
-          <div className="bio-blurb">
-            <h1>{frontmatter.title}</h1>
-          </div>
+          <div className="bio-blurb">{/* <h1>{frontmatter.title}</h1> */}</div>
           <LighthouseBG className="lighthouse" />
           <div className="post-content">
             <div className="content-inner">
               <p>{formatDate(frontmatter.date)}</p>
+              <h1>{frontmatter.title}</h1>
               <ReactMarkdown source={markdownBody} />
             </div>
             <footer />
