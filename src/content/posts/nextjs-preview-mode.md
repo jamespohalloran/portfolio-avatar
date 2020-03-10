@@ -48,7 +48,7 @@ Nope! Just one. With SSR, the data is dynamic, so each user's request can query 
 
 ## Neat!
 
-And of course, my live production site is still fully static. When I enter enter-mode, it switches to use SSR. It's the best of both worlds!
+And of course, my live production site is still fully static. When I enter edit-mode, it switches to use SSR. It's the best of both worlds!
 
 This (in my opinion) is going to be a gamechanger. Good work, Zeit team!
 
