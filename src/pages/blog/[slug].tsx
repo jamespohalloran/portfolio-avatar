@@ -20,11 +20,16 @@ export default function Post(props: Props) {
   const markdownBody = props.content;
   const frontmatter = props.data;
 
+  const excerpt = formatExcerpt(markdownBody);
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
       <NextSeo
         title={frontmatter.title}
-        description={formatExcerpt(markdownBody)}
+        description={excerpt}
+        openGraph={{
+          title: frontmatter.title,
+          description: excerpt
+        }}
       />
       <div id="post">
         <Header />
