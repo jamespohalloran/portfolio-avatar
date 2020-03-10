@@ -52,7 +52,7 @@ class MyApp extends App {
           }}
           twitter={{
             handle: siteData.social.twitterHandle,
-            site: siteData.social.twitterHandle,
+            site: siteData.siteUrl,
             cardType: "summary_large_image"
           }}
         />
