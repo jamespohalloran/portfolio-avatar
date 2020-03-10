@@ -28,7 +28,9 @@ Those might seem like minor qualms, but I think it's a huge part of the reason t
 
 With this latest NextJS release, Each page template can be designed to export statically, but can provide alternate behaviour for when they are run using SSR.
 
-This has allowed us at [TinaCMS](https://tinacms.org/blog/introducing-visual-open-authoring) to provide an "open authoring" solution where our site is static, but can be run in dynamic "edit" mode with custom content per-user.
+This has allowed us at [TinaCMS](https://tinacms.org) to provide an "open authoring" solution where our site is static, but can be run in dynamic "edit" mode with custom content per-user.
+
+_See [our announcement](https://tinacms.org/blog/introducing-visual-open-authoring) for more details on our "Open Authoring" use-case._
 
 So... back to our drawbacks of static-building mentioned above...
 
