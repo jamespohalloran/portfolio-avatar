@@ -24,11 +24,11 @@ When a site is built statically:
 
 Those might seem like minor qualms, but I think it's a huge part of the reason that static site CMS's haven't caught up to the editing/collaboration experience of services like Squarespace. Seeing a live preview of a site is a crucial step before publishing changes, and the above drawbacks make it challenging.
 
-## Next's [Preview Mode"](https://nextjs.org/blog/next-9-3#preview-mode) to the rescue
+## Next's ["Preview Mode"](https://nextjs.org/blog/next-9-3#preview-mode) to the rescue
 
 With this latest NextJS release, Each page template can be designed to export statically, but can provide alternate behaviour for when they are run using SSR.
 
-This has allowed us at [TinaCMS]("https://tinacms.org/") to provide an "open authoring" solution where our site is static, but can be run in dynamic "edit" mode with custom content per-user.
+This has allowed us at [TinaCMS](https://tinacms.org/) to provide an "open authoring" solution where our site is static, but can be run in dynamic "edit" mode with custom content per-user.
 
 So... back to our drawbacks of static-building mentioned above...
 
