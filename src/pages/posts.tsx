@@ -43,6 +43,16 @@ const PostPreview = ({ post, slug }: any) => (
   </div>
 );
 
+function orderPosts(posts: any[]) {
+  console.log(posts);
+  function sortByDate(a: any, b: any) {
+    const dateA = new Date(a.post.data.date).getTime();
+    const dateB = new Date(b.post.data.date).getTime();
+    return dateB - dateA;
+  }
+  return posts.slice().sort(sortByDate);
+}
+
 export async function unstable_getStaticProps() {
   // get all blog data for list
   const posts = (context => {
@@ -73,7 +83,7 @@ export async function unstable_getStaticProps() {
   return {
     props: {
       fileRelativePath: `src/data/config.json`,
-      posts
+      posts: orderPosts(posts)
     }
   };
 }
