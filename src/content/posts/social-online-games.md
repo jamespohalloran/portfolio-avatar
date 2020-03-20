@@ -37,7 +37,7 @@ You're a ball, on a team of balls. Grab the other team's flag to win! It's simpl
 
 ## [Golf With Friends](https://store.steampowered.com/app/431240/Golf_With_Your_Friends/)
 
-Price: 8.99 (per player)
+Price: $8.99 (per player)
 
 Platform: Steam
 
@@ -46,6 +46,8 @@ Mini golf, with friends! I'm incredibly bad at this game, but I think that may b
 ## [Local multiplayer games with "Steam remote play together"](https://store.steampowered.com/remoteplay)
 
 Price: Free (you just need to own the game)
+
+Platform: Steam
 
 Steam has a super cool (new-to-me) feature where you can play local-multiplayer games online with friends.
 You can [search for games](https://store.steampowered.com/search/?category2=44) that support the Remote play feature.
@@ -60,7 +62,7 @@ Some of my favorites include
 
 ## [Tabletop Simulator](https://store.steampowered.com/app/286160/Tabletop_Simulator/)
 
-Price: 21.99 (per player)
+Price: $21.99 (per player)
 
 Platform: Steam
 
