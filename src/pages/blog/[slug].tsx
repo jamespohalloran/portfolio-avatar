@@ -34,9 +34,9 @@ export default function Post(props: Props) {
               url: "https://johalloran.dev/img/SelfAvatar307.jpg",
               width: 614,
               height: 307,
-              alt: `James O'Halloran`
-            }
-          ]
+              alt: `James O'Halloran`,
+            },
+          ],
         }}
       />
       <div id="post">
@@ -58,23 +58,25 @@ export default function Post(props: Props) {
   );
 }
 
-export async function unstable_getStaticPaths() {
+export const getStaticPaths = async function () {
   const fg = require("fast-glob");
   const fullPath = path.resolve("src/content/posts/**/*.md");
   const blogs = await fg(fullPath);
+  return {
+    paths: blogs.map((file: string) => {
+      const slug = file
+        .split("/posts/")[1]
+        .replace(/ /g, "-")
+        .slice(0, -3)
+        .trim();
 
-  return blogs.map((file: string) => {
-    const slug = file
-      .split("/posts/")[1]
-      .replace(/ /g, "-")
-      .slice(0, -3)
-      .trim();
+      return { params: { slug } };
+    }),
+    fallback: true,
+  };
+};
 
-    return { params: { slug } };
-  });
-}
-
-export async function unstable_getStaticProps(context: any) {
+export async function getStaticProps(context: any) {
   var fs = require("fs");
   const { slug } = context.params;
 
@@ -83,11 +85,11 @@ export async function unstable_getStaticProps(context: any) {
     `${decodeURIComponent(slug)}.md`
   );
   const file = fs.readFileSync(fullPath);
-  const data = matter(file);
+  const { orig, ...data } = matter(file);
 
   return {
     props: {
-      ...data
-    }
+      ...data,
+    },
   };
 }

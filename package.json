@@ -13,7 +13,7 @@
     "framer-motion": "^1.7.0",
     "gray-matter": "^4.0.2",
     "gsap": "^3.0.1",
-    "next": "9.2.2-canary.12",
+    "next": "9.3.4",
     "next-seo": "^4.1.0",
     "raw-loader": "^4.0.0",
     "react": "^16.12.0",

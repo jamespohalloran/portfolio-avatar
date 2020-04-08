@@ -19,11 +19,11 @@ export default function About(props: any) {
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: "easeInOutSine",
       duration: 1000,
-      delay: function(el, i) {
+      delay: function (el, i) {
         return i * 150;
       },
       direction: "alternate",
-      loop: false
+      loop: false,
     });
     const detailsAnim = anime({
       targets: "#bio path",
@@ -31,7 +31,7 @@ export default function About(props: any) {
       duration: 2000,
       fillOpacity: 1,
       easing: "easeInOutSine",
-      complete: function() {
+      complete: function () {
         document.body.setAttribute("bg-state", "bright");
 
         const sunEl = document.querySelector(`#bio #sun`);
@@ -42,9 +42,9 @@ export default function About(props: any) {
           targets: "#bio #sun",
           duration: 2000,
           easing: "easeInOutSine",
-          cy: "-70"
+          cy: "-70",
         });
-      }
+      },
     });
 
     return () => {
@@ -85,13 +85,13 @@ export default function About(props: any) {
   );
 }
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   const content = await require(`../content/about.md`);
 
   const data = matter(content.default);
   return {
     props: {
-      ...data
-    }
+      ...data,
+    },
   };
 }

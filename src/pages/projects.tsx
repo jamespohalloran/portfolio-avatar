@@ -36,9 +36,9 @@ const ProjectPreview = ({ project }: any) => (
   </div>
 );
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   // get all blog data for list
-  const projects = (context => {
+  const projects = ((context) => {
     const keys = context.keys();
     const values = keys.map(context);
     const data = keys.map((key: string, index: number) => {
@@ -46,7 +46,7 @@ export async function unstable_getStaticProps() {
       // Parse yaml metadata & markdownbody in document
       const project = matter(value.default);
       return {
-        project
+        project,
       };
     });
     return data;
@@ -55,7 +55,7 @@ export async function unstable_getStaticProps() {
   return {
     props: {
       fileRelativePath: `src/data/config.json`,
-      projects
-    }
+      projects,
+    },
   };
 }

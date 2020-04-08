@@ -53,9 +53,9 @@ function orderPosts(posts: any[]) {
   return posts.slice().sort(sortByDate);
 }
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   // get all blog data for list
-  const posts = (context => {
+  const posts = ((context) => {
     const keys = context.keys();
     const values = keys.map(context);
     const data = keys.map((key: string, index: number) => {
@@ -68,13 +68,14 @@ export async function unstable_getStaticProps() {
         .join(".");
       const value = values[index];
       // Parse yaml metadata & markdownbody in document
-      const post = matter(value.default);
+      const { orig, ...post } = matter(value.default);
+      console.log(post);
       return {
         post: {
           ...post,
-          content: formatExcerpt(post.content)
+          content: formatExcerpt(post.content),
         },
-        slug
+        slug,
       };
     });
     return data;
@@ -83,7 +84,7 @@ export async function unstable_getStaticProps() {
   return {
     props: {
       fileRelativePath: `src/data/config.json`,
-      posts: orderPosts(posts)
-    }
+      posts: orderPosts(posts),
+    },
   };
 }
