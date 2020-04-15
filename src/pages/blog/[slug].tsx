@@ -9,6 +9,9 @@ import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../../helpers/FadeWrapper";
 import { NextSeo } from "next-seo";
 import { formatExcerpt, formatDate } from "../../helpers/markdownUtils";
+import { InlineForm, InlineWysiwyg } from "react-tinacms-inline";
+import { useLocalForm } from "tinacms";
+
 var path = require("path");
 
 interface Props {
@@ -21,40 +24,74 @@ export default function Post(props: Props) {
   const frontmatter = props.data;
 
   const excerpt = formatExcerpt(markdownBody);
+
+  const formOptions = {
+    label: "Home Page",
+    fields: [
+      {
+        name: "markdownBody",
+        label: "Home Page Content",
+        component: "markdown",
+      },
+    ],
+  };
+
+  const [formData, form] = useLocalForm({
+    id: "blog",
+    label: "blog",
+    initialValues: { markdownBody },
+    fields: [
+      {
+        name: "markdownBody",
+        label: "Home Page Content",
+        component: "markdown",
+      },
+    ],
+    // save & commit the file when the "save" button is pressed
+    onSubmit(formData) {},
+  });
+
   return (
-    <motion.div initial="exit" animate="enter" exit="exit">
-      <NextSeo
-        title={frontmatter.title}
-        description={excerpt}
-        openGraph={{
-          title: frontmatter.title,
-          description: excerpt,
-          images: [
-            {
-              url: "https://johalloran.dev/img/SelfAvatar307.jpg",
-              width: 614,
-              height: 307,
-              alt: `James O'Halloran`,
-            },
-          ],
-        }}
-      />
-      <div id="post">
-        <Header />
-        <FadeWrapper>
-          <div className="bio-blurb">{/* <h1>{frontmatter.title}</h1> */}</div>
-          <LighthouseBG className="lighthouse" />
-          <div className="post-content">
-            <div className="content-inner">
-              <p>{formatDate(frontmatter.date)}</p>
-              <h1>{frontmatter.title}</h1>
-              <ReactMarkdown source={markdownBody} />
+    <InlineForm form={form}>
+      <motion.div initial="exit" animate="enter" exit="exit">
+        <NextSeo
+          title={frontmatter.title}
+          description={excerpt}
+          openGraph={{
+            title: frontmatter.title,
+            description: excerpt,
+            images: [
+              {
+                url: "https://johalloran.dev/img/SelfAvatar307.jpg",
+                width: 614,
+                height: 307,
+                alt: `James O'Halloran`,
+              },
+            ],
+          }}
+        />
+        <div id="post">
+          <Header />
+          <FadeWrapper>
+            <div className="bio-blurb">
+              {/* <h1>{frontmatter.title}</h1> */}
             </div>
-            <footer />
-          </div>
-        </FadeWrapper>
-      </div>
-    </motion.div>
+            <LighthouseBG className="lighthouse" />
+            <div className="post-content">
+              <div className="content-inner">
+                <p>{formatDate(frontmatter.date)}</p>
+                <h1>{frontmatter.title}</h1>
+
+                <InlineWysiwyg name="markdownBody">
+                  <ReactMarkdown source={formData.markdownBody} />
+                </InlineWysiwyg>
+              </div>
+              <footer />
+            </div>
+          </FadeWrapper>
+        </div>
+      </motion.div>
+    </InlineForm>
   );
 }
 
