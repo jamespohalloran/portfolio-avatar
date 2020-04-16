@@ -8,6 +8,9 @@ import TagManager from "react-gtm-module";
 import Router from "next/router";
 import { initialPageStates } from "../helpers/pageStates";
 import { TinaCMS, TinaProvider } from "tinacms";
+import { GithubClient } from "react-tinacms-github";
+
+const REPO_FULL_NAME = process.env.REPO_FULL_NAME as string; // e.g: tinacms/tinacms.org
 
 const handleRouteChange = (url: string) => {
   const initialState = initialPageStates[url];
@@ -23,7 +26,12 @@ class MyApp extends App {
   cms: any;
 
   componentWillMount() {
-    this.cms = new TinaCMS();
+    this.cms = new TinaCMS({
+      apis: {
+        github: new GithubClient("/api/proxy-github", REPO_FULL_NAME),
+      },
+      // ... any other tina config
+    });
   }
   componentDidMount() {
     if (process.env.NODE_ENV === "production") {
