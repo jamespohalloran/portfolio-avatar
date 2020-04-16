@@ -1,22 +1,28 @@
 const withCSS = require("@zeit/next-css");
+require("dotenv").config();
 
 module.exports = withCSS({
+  env: {
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    REPO_FULL_NAME: process.env.REPO_FULL_NAME,
+    BASE_BRANCH: process.env.BASE_BRANCH,
+  },
   webpack(config) {
     config.module.rules.push(
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         issuer: {
-          test: /\.tsx?$/
+          test: /\.tsx?$/,
         },
         use: [
           {
             loader: require.resolve("@svgr/webpack"),
             options: {
-              svgo: false
-            }
+              svgo: false,
+            },
           },
-          "url-loader"
-        ]
+          "url-loader",
+        ],
       },
 
       {
@@ -42,22 +48,22 @@ module.exports = withCSS({
 
                 return `static/css/images/${url}`;
               },
-              publicPath: `images/`
-            }
-          }
-        ]
+              publicPath: `images/`,
+            },
+          },
+        ],
       }
     );
 
     config.node = {
-      fs: "empty"
+      fs: "empty",
     };
 
     config.module.rules.push({
       test: /\.md$/,
-      use: "raw-loader"
+      use: "raw-loader",
     });
 
     return config;
-  }
+  },
 });

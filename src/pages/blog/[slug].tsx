@@ -10,46 +10,53 @@ import FadeWrapper from "../../helpers/FadeWrapper";
 import { NextSeo } from "next-seo";
 import { formatExcerpt, formatDate } from "../../helpers/markdownUtils";
 import { InlineForm, InlineWysiwyg } from "react-tinacms-inline";
-import { useLocalForm } from "tinacms";
+import { getGithubPreviewProps, GithubPreviewProps } from "next-tinacms-github";
+import {
+  useGithubMarkdownForm,
+  useGithubErrorListener,
+} from "react-tinacms-github";
 
 var path = require("path");
 
 interface Props {
   content: string;
   data: any;
+  file: {
+    sha: string;
+    fileRelativePath: string;
+    data: [Object];
+  };
+  sourceProvider: {
+    forkFullName: string;
+    headBranch: string;
+  };
+  preview: boolean;
+  error?: string;
 }
 
 export default function Post(props: Props) {
-  const markdownBody = props.content;
-  const frontmatter = props.data;
-
-  const excerpt = formatExcerpt(markdownBody);
-
   const formOptions = {
-    label: "Home Page",
+    id: "blog",
+    label: "blog",
     fields: [
       {
         name: "markdownBody",
-        label: "Home Page Content",
+        label: "Blog Content",
         component: "markdown",
       },
     ],
   };
 
-  const [formData, form] = useLocalForm({
-    id: "blog",
-    label: "blog",
-    initialValues: { markdownBody },
-    fields: [
-      {
-        name: "markdownBody",
-        label: "Home Page Content",
-        component: "markdown",
-      },
-    ],
-    // save & commit the file when the "save" button is pressed
-    onSubmit(formData) {},
+  const [formData, form] = useGithubMarkdownForm(props.file, formOptions, {
+    branch: props.sourceProvider?.headBranch || "",
+    forkFullName: props.sourceProvider?.forkFullName || "",
+    baseRepoFullName: process.env.baseRepoFullName || "",
   });
+  useGithubErrorListener(form);
+
+  const { frontmatter, markdownBody } = formData;
+
+  const excerpt = formatExcerpt(markdownBody);
 
   return (
     <InlineForm form={form}>
@@ -113,20 +120,42 @@ export const getStaticPaths = async function () {
   };
 };
 
-export async function getStaticProps(context: any) {
+export async function getStaticProps({
+  preview,
+  previewData,
+  ...context
+}: any): Promise<GithubPreviewProps> {
   var fs = require("fs");
   const { slug } = context.params;
 
-  const fullPath = path.resolve(
+  const relPath = path.join(
     "src/content/posts",
     `${decodeURIComponent(slug)}.md`
   );
-  const file = fs.readFileSync(fullPath);
+
+  if (preview) {
+    return getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: relPath,
+      format: "markdown",
+    });
+  }
+  const file = fs.readFileSync(path.resolve(relPath));
   const { orig, ...data } = matter(file);
 
   return {
     props: {
-      ...data,
+      preview: false,
+      sourceProvider: null,
+      file: {
+        sha: "",
+        fileRelativePath: relPath,
+        data: {
+          frontmatter: data.data,
+          markdownBody: data.content,
+        },
+      },
+      error: null,
     },
   };
 }

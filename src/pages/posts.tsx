@@ -44,7 +44,6 @@ const PostPreview = ({ post, slug }: any) => (
 );
 
 function orderPosts(posts: any[]) {
-  console.log(posts);
   function sortByDate(a: any, b: any) {
     const dateA = new Date(a.post.data.date).getTime();
     const dateB = new Date(b.post.data.date).getTime();
@@ -69,7 +68,6 @@ export async function getStaticProps() {
       const value = values[index];
       // Parse yaml metadata & markdownbody in document
       const { orig, ...post } = matter(value.default);
-      console.log(post);
       return {
         post: {
           ...post,
