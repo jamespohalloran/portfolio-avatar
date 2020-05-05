@@ -20,6 +20,10 @@ export default function Post(props: Props) {
   const markdownBody = props.content;
   const frontmatter = props.data;
 
+  if (!frontmatter) {
+    return <div />;
+  }
+
   const excerpt = formatExcerpt(markdownBody);
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
