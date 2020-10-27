@@ -1,14 +1,8 @@
 import React from "react";
 import "../../static/css/App.css";
 import "../../static/css/avatar.css";
-import { ReactComponent as LighthouseBG } from "../../static/lighthouse-flat.svg";
-import { motion } from "framer-motion";
-import Header from "../layout/Header";
 import matter from "gray-matter";
-import ReactMarkdown from "react-markdown";
-import FadeWrapper from "../../helpers/FadeWrapper";
-import { NextSeo } from "next-seo";
-import { formatExcerpt, formatDate } from "../../helpers/markdownUtils";
+import { Post } from "../../components/post";
 var path = require("path");
 
 interface Props {
@@ -16,51 +10,7 @@ interface Props {
   data: any;
 }
 
-export default function Post(props: Props) {
-  const markdownBody = props.content;
-  const frontmatter = props.data;
-
-  if (!frontmatter) {
-    return <div />;
-  }
-
-  const excerpt = formatExcerpt(markdownBody);
-  return (
-    <motion.div initial="exit" animate="enter" exit="exit">
-      <NextSeo
-        title={frontmatter.title}
-        description={excerpt}
-        openGraph={{
-          title: frontmatter.title,
-          description: excerpt,
-          images: [
-            {
-              url: "https://johalloran.dev/img/SelfAvatar307.jpg",
-              width: 614,
-              height: 307,
-              alt: `James O'Halloran`,
-            },
-          ],
-        }}
-      />
-      <div id="post">
-        <Header />
-        <FadeWrapper>
-          <div className="bio-blurb">{/* <h1>{frontmatter.title}</h1> */}</div>
-          <LighthouseBG className="lighthouse" />
-          <div className="post-content">
-            <div className="content-inner">
-              <p>{formatDate(frontmatter.date)}</p>
-              <h1>{frontmatter.title}</h1>
-              <ReactMarkdown source={markdownBody} />
-            </div>
-            <footer />
-          </div>
-        </FadeWrapper>
-      </div>
-    </motion.div>
-  );
-}
+export default Post;
 
 export const getStaticPaths = async function () {
   const fg = require("fast-glob");
