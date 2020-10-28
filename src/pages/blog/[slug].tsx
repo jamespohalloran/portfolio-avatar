@@ -7,7 +7,7 @@ var path = require("path");
 
 interface Props {
   content: string;
-  data: any;
+  data: { frontmatter: any };
 }
 
 export default Post;

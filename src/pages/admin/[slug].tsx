@@ -5,32 +5,29 @@ import matter from "gray-matter";
 import { Post } from "../../components/post";
 import { TinaCMS, TinaProvider } from "tinacms";
 import { useForm, usePlugin } from "tinacms";
+
+//@ts-ignore
 import { MarkdownFieldPlugin } from "react-tinacms-editor";
 var path = require("path");
 
 const EditablePost = (props: any) => {
-  const markdownBody = props.content;
-  const frontmatter = props.data;
-
   const [modifiedValues, form] = useForm({
     id: props.fileRelativePath,
     label: "Edit Post",
     fields: [
       {
-        name: "title",
+        name: "data.title",
         label: "Title",
         component: "text",
       },
+
       {
-        name: "markdownContent",
+        name: "content",
         label: "content",
         component: "markdown",
       },
     ],
-    initialValues: {
-      title: frontmatter.title,
-      markdownContent: markdownBody,
-    },
+    initialValues: props,
     onSubmit: async (formData) => {
       // save the new form data
     },
@@ -39,7 +36,7 @@ const EditablePost = (props: any) => {
   // 2. Register it with the CMS
   usePlugin(form);
 
-  return <Post {...props} />;
+  return <Post {...{ ...props, ...modifiedValues }} />;
 };
 
 export default (props: any) => {
