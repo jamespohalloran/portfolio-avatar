@@ -1,6 +1,7 @@
 ---
 date: "2020-02-16T07:00:00.000Z"
 title: "Welcome to johalloran.dev!"
+_template: "post"
 ---
 
 Hey there! I'm James O'Halloran, a software developer from Prince Edward Island, Canada.

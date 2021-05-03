@@ -1,6 +1,7 @@
 ---
 date: "2020-03-10T07:00:00.000Z"
 title: "Let's make static sites dynamic again! ...sorta"
+_template: "post"
 ---
 
 I've been working with static sites for several years now. Before that, Wordpress was my go-to... and I hope to never again dig through their source-code 🙃. The switch to developing with static site generators has made my sites:
