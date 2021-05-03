@@ -13,7 +13,7 @@
     "framer-motion": "^1.7.0",
     "gray-matter": "^4.0.2",
     "gsap": "^3.0.1",
-    "next": "9.3.4",
+    "next": "10.0.5",
     "next-seo": "^4.1.0",
     "raw-loader": "^4.0.0",
     "react": "^16.12.0",
@@ -23,6 +23,8 @@
     "react-scripts": "3.2.0",
     "remove-markdown": "^0.3.0",
     "snapsvg": "^0.5.1",
+    "styled-components": "^5.2.3",
+    "tinacms": "^0.40.0",
     "typescript": "3.7.2"
   },
   "scripts": {
@@ -57,6 +59,7 @@
     "@types/remove-markdown": "^0.1.1",
     "@types/snapsvg": "^0.5.0",
     "@zeit/next-css": "^1.0.1",
+    "tina-graphql-gateway": "^0.2.6",
     "tina-graphql-gateway-cli": "^0.2.40",
     "url-loader": "^3.0.0"
   }

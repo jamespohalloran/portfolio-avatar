@@ -4,21 +4,24 @@ import "../../static/css/avatar.css";
 import { ReactComponent as LighthouseBG } from "../../static/lighthouse-flat.svg";
 import { motion } from "framer-motion";
 import Header from "../layout/Header";
-import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../../helpers/FadeWrapper";
 import { NextSeo } from "next-seo";
 import { formatExcerpt, formatDate } from "../../helpers/markdownUtils";
 var path = require("path");
+import { LocalClient } from "tina-graphql-gateway";
+import { Query } from "../../../.tina/__generated__/types";
 
 interface Props {
-  content: string;
-  data: any;
+  _body: string;
+  title: string;
+  date: any;
 }
 
+//TODO remove Props
 export default function Post(props: Props) {
-  const markdownBody = props.content;
-  const frontmatter = props.data;
+  const markdownBody = props._body;
+  const frontmatter = props;
 
   if (!frontmatter) {
     return <div />;
@@ -81,19 +84,31 @@ export const getStaticPaths = async function () {
 };
 
 export async function getStaticProps(context: any) {
-  var fs = require("fs");
+  const client = new LocalClient();
   const { slug } = context.params;
 
-  const fullPath = path.resolve(
-    "src/content/posts",
-    `${decodeURIComponent(slug)}.md`
-  );
-  const file = fs.readFileSync(fullPath);
-  const { orig, ...data } = matter(file);
+  const query = (gql: any) => gql`
+    query BlogPostQuery($relativePath: String!) {
+      getPostsDocument(relativePath: $relativePath) {
+        data {
+          __typename
+          ... on Post_Doc_Data {
+            title
+            date
+            _body
+          }
+        }
+      }
+    }
+  `;
+
+  const content = await client.request<Query>(query, {
+    variables: { relativePath: `${slug}.md` },
+  });
 
   return {
     props: {
-      ...data,
+      ...content.getPostsDocument!.data,
     },
   };
 }
