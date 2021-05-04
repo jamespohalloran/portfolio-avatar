@@ -12,12 +12,6 @@ var path = require("path");
 import { LocalClient } from "tina-graphql-gateway";
 import { Posts_Document, Query } from "../../../.tina/__generated__/types";
 
-interface Props {
-  _body: string;
-  title: string;
-  date: any;
-}
-
 export type PostQueryResponseType = {
   getPostsDocument: Posts_Document;
 };
