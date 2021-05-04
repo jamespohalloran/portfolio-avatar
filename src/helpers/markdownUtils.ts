@@ -3,7 +3,7 @@ import removeMarkdown from "remove-markdown";
 export function formatExcerpt(content: string) {
   const plainTextExcerpt = removeMarkdown(content, {
     stripListLeaders: true,
-    gfm: true
+    gfm: true,
   })
     .replace(/(\r\n|\n|\r)/gm, "")
     .substring(0, 200)
@@ -14,11 +14,10 @@ export function formatExcerpt(content: string) {
 
 export function formatDate(fullDate: string) {
   const date = new Date(fullDate);
-  const dateOptions = {
+  return date.toLocaleDateString("en-US", {
     formatMatcher: "best fit",
     month: "long",
     year: "numeric",
-    day: "numeric"
-  };
-  return date.toLocaleDateString("en-US", dateOptions);
+    day: "numeric",
+  });
 }

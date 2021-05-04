@@ -32,13 +32,12 @@ export const query = (gql: any) => gql`
 `;
 
 export default function Post(props: PostQueryResponseType) {
-  const pageData = props.getPostsDocument.data!;
-  const markdownBody = pageData._body!;
-
-  if (!pageData) {
+  if (!props.getPostsDocument?.data) {
     return <div />;
   }
 
+  const pageData = props.getPostsDocument.data!;
+  const markdownBody = pageData._body!;
   const excerpt = formatExcerpt(markdownBody);
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
