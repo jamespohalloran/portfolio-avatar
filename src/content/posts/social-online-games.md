@@ -1,7 +1,7 @@
 ---
-date: "2020-03-20T07:00:00.000Z"
-title: "Best online games for friends during a pandemic"
-_template: "post"
+date: 'Mar 20, 2020'
+title: Best online games for friends during a pandemic!
+_template: post
 ---
 
 At the time of writing, we're about one-week into this world of "social distancing". There's many downsides, but one upside is that your non-gamer friends may just be bored enough to play an online game with you! Here's a set of games that will give you the best shot at rallying the troops!
