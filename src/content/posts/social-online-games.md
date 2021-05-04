@@ -1,6 +1,5 @@
 ---
-date: 'Mar 20, 2020'
-title: Best online games for friends during a pandemic!
+title: Best online games for friends during a pandemic
 _template: post
 ---
 
