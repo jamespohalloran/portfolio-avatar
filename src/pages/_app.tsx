@@ -1,12 +1,15 @@
 import React from "react";
 import App from "next/app";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import siteData from "../content/siteMeta.json";
 import { DefaultSeo } from "next-seo";
 import TagManager from "react-gtm-module";
 import Router from "next/router";
 import { initialPageStates } from "../helpers/pageStates";
+import dynamic from "next/dynamic";
+
+const TinaWrapper = dynamic(() => import("../components/tina-wrapper"));
 
 const handleRouteChange = (url: string) => {
   const initialState = initialPageStates[url];
@@ -22,7 +25,7 @@ class MyApp extends App {
   componentDidMount() {
     if (process.env.NODE_ENV === "production") {
       TagManager.initialize({
-        gtmId: "GTM-P47DQN9"
+        gtmId: "GTM-P47DQN9",
       });
     }
   }
@@ -30,6 +33,13 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, router } = this.props;
 
+    if (router.route.startsWith("/admin")) {
+      return (
+        <TinaWrapper>
+          <Component {...pageProps} />
+        </TinaWrapper>
+      );
+    }
     return (
       <>
         <DefaultSeo
@@ -46,14 +56,14 @@ class MyApp extends App {
                 url: "https://johalloran.dev/img/social-share.png",
                 width: 1200,
                 height: 628,
-                alt: `James O'Halloran`
-              }
-            ]
+                alt: `James O'Halloran`,
+              },
+            ],
           }}
           twitter={{
             handle: siteData.social.twitterHandle,
             site: siteData.siteUrl,
-            cardType: "summary_large_image"
+            cardType: "summary_large_image",
           }}
         />
         <Head>

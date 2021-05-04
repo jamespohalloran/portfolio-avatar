@@ -10,7 +10,7 @@ import { NextSeo } from "next-seo";
 import { formatExcerpt, formatDate } from "../../helpers/markdownUtils";
 var path = require("path");
 import { LocalClient } from "tina-graphql-gateway";
-import { Query } from "../../../.tina/__generated__/types";
+import { Posts_Document, Query } from "../../../.tina/__generated__/types";
 
 interface Props {
   _body: string;
@@ -18,12 +18,30 @@ interface Props {
   date: any;
 }
 
-//TODO remove Props
-export default function Post(props: Props) {
-  const markdownBody = props._body;
-  const frontmatter = props;
+export type PostQueryResponseType = {
+  getPostsDocument: Posts_Document;
+};
 
-  if (!frontmatter) {
+export const query = (gql: any) => gql`
+  query BlogPostQuery($relativePath: String!) {
+    getPostsDocument(relativePath: $relativePath) {
+      data {
+        __typename
+        ... on Post_Doc_Data {
+          title
+          date
+          _body
+        }
+      }
+    }
+  }
+`;
+
+export default function Post(props: PostQueryResponseType) {
+  const pageData = props.getPostsDocument.data!;
+  const markdownBody = pageData._body!;
+
+  if (!pageData) {
     return <div />;
   }
 
@@ -31,10 +49,10 @@ export default function Post(props: Props) {
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
       <NextSeo
-        title={frontmatter.title}
+        title={pageData.title!}
         description={excerpt}
         openGraph={{
-          title: frontmatter.title,
+          title: pageData.title!,
           description: excerpt,
           images: [
             {
@@ -53,8 +71,8 @@ export default function Post(props: Props) {
           <LighthouseBG className="lighthouse" />
           <div className="post-content">
             <div className="content-inner">
-              <p>{formatDate(frontmatter.date)}</p>
-              <h1>{frontmatter.title}</h1>
+              <p>{formatDate(pageData.date!)}</p>
+              <h1>{pageData.title!}</h1>
               <ReactMarkdown source={markdownBody} />
             </div>
             <footer />
@@ -87,28 +105,11 @@ export async function getStaticProps(context: any) {
   const client = new LocalClient();
   const { slug } = context.params;
 
-  const query = (gql: any) => gql`
-    query BlogPostQuery($relativePath: String!) {
-      getPostsDocument(relativePath: $relativePath) {
-        data {
-          __typename
-          ... on Post_Doc_Data {
-            title
-            date
-            _body
-          }
-        }
-      }
-    }
-  `;
-
   const content = await client.request<Query>(query, {
     variables: { relativePath: `${slug}.md` },
   });
 
   return {
-    props: {
-      ...content.getPostsDocument!.data,
-    },
+    props: content,
   };
 }
