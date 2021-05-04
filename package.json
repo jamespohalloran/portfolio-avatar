@@ -28,9 +28,9 @@
     "typescript": "3.7.2"
   },
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
+    "dev": "yarn tina-gql server:start -c \"next dev\"",
+    "build": "yarn tina-gql server:start -c \"next build\"",
+    "start": "yarn tina-gql server:start -c \"next start\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "export": "next export",
