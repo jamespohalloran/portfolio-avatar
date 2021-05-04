@@ -1,12 +1,12 @@
 import { Client, LocalClient } from "tina-graphql-gateway";
 
-export const createClient = (branch: string = "master") => {
+export const createClient = (branch?: string) => {
   return process.env.NEXT_PUBLIC_USE_LOCAL_CLIENT === "1"
     ? new LocalClient()
     : createCloudClient(branch);
 };
 
-export const createCloudClient = (branch: string = "master") => {
+export const createCloudClient = (branch: string = "tina-cloud") => {
   const organization = process.env.NEXT_PUBLIC_ORGANIZATION_NAME;
   const clientId = process.env.NEXT_PUBLIC_TINA_CLIENT_ID;
 
