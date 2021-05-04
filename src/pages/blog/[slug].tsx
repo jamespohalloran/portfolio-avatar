@@ -4,34 +4,48 @@ import "../../static/css/avatar.css";
 import { ReactComponent as LighthouseBG } from "../../static/lighthouse-flat.svg";
 import { motion } from "framer-motion";
 import Header from "../layout/Header";
-import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 import FadeWrapper from "../../helpers/FadeWrapper";
 import { NextSeo } from "next-seo";
 import { formatExcerpt, formatDate } from "../../helpers/markdownUtils";
 var path = require("path");
+import { LocalClient } from "tina-graphql-gateway";
+import { Posts_Document, Query } from "../../../.tina/__generated__/types";
 
-interface Props {
-  content: string;
-  data: any;
-}
+export type PostQueryResponseType = {
+  getPostsDocument: Posts_Document;
+};
 
-export default function Post(props: Props) {
-  const markdownBody = props.content;
-  const frontmatter = props.data;
+export const query = (gql: any) => gql`
+  query BlogPostQuery($relativePath: String!) {
+    getPostsDocument(relativePath: $relativePath) {
+      data {
+        __typename
+        ... on Post_Doc_Data {
+          title
+          date
+          _body
+        }
+      }
+    }
+  }
+`;
 
-  if (!frontmatter) {
+export default function Post(props: PostQueryResponseType) {
+  if (!props.getPostsDocument?.data) {
     return <div />;
   }
 
+  const pageData = props.getPostsDocument.data!;
+  const markdownBody = pageData._body!;
   const excerpt = formatExcerpt(markdownBody);
   return (
     <motion.div initial="exit" animate="enter" exit="exit">
       <NextSeo
-        title={frontmatter.title}
+        title={pageData.title!}
         description={excerpt}
         openGraph={{
-          title: frontmatter.title,
+          title: pageData.title!,
           description: excerpt,
           images: [
             {
@@ -50,8 +64,8 @@ export default function Post(props: Props) {
           <LighthouseBG className="lighthouse" />
           <div className="post-content">
             <div className="content-inner">
-              <p>{formatDate(frontmatter.date)}</p>
-              <h1>{frontmatter.title}</h1>
+              <p>{formatDate(pageData.date!)}</p>
+              <h1>{pageData.title!}</h1>
               <ReactMarkdown source={markdownBody} />
             </div>
             <footer />
@@ -81,19 +95,14 @@ export const getStaticPaths = async function () {
 };
 
 export async function getStaticProps(context: any) {
-  var fs = require("fs");
+  const client = new LocalClient();
   const { slug } = context.params;
 
-  const fullPath = path.resolve(
-    "src/content/posts",
-    `${decodeURIComponent(slug)}.md`
-  );
-  const file = fs.readFileSync(fullPath);
-  const { orig, ...data } = matter(file);
+  const content = await client.request<Query>(query, {
+    variables: { relativePath: `${slug}.md` },
+  });
 
   return {
-    props: {
-      ...data,
-    },
+    props: content,
   };
 }
