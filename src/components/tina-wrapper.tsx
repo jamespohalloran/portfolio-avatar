@@ -1,6 +1,6 @@
 import React from "react";
 import { TinaCMS } from "tinacms";
-import { LocalClient, TinaCloudAuthWall } from "tina-graphql-gateway";
+import { Client, TinaCloudAuthWall } from "tina-graphql-gateway";
 
 /**
  * This gets loaded dynamically in "pages/_app.js"
@@ -10,7 +10,11 @@ const TinaWrapper = ({ children }: { children: any }) => {
   const cms = React.useMemo(() => {
     return new TinaCMS({
       apis: {
-        tina: new LocalClient(),
+        tina: new Client({
+          organizationId: "awkosock",
+          clientId: "2tc0vv6svotfr1ksfnnj87sbo2",
+          branch: "tina-cloud2",
+        }),
       },
       sidebar: true,
       enabled: true,
