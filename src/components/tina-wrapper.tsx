@@ -12,8 +12,8 @@ const TinaWrapper = ({ children }: { children: any }) => {
       apis: {
         tina: new Client({
           organizationId: "awkosock",
-          clientId: "2tc0vv6svotfr1ksfnnj87sbo2",
-          branch: "tina-cloud2",
+          clientId: "7nnikc9d9d00802atg8s1ecrut",
+          branch: "tina-cloud3",
         }),
       },
       sidebar: true,
