@@ -27,7 +27,7 @@
     "tina-graphql-gateway": "^0.2.8",
     "tina-graphql-gateway-cli": "^0.2.40",
     "tinacms": "^0.40.1",
-    "typescript": "3.7.2"
+    "typescript": "^4.2.4"
   },
   "scripts": {
     "dev": "next",
