@@ -1,5 +1,7 @@
 import React from "react";
 import { useGraphqlForms } from "tina-graphql-gateway";
+import { MarketingPages_Document } from "../../../.tina/__generated__/types";
+import AboutPage from "../about";
 
 export default function () {
   const query = (gql: any) => gql`
@@ -16,9 +18,18 @@ export default function () {
       }
     }
   `;
-  const [payload, isLoading] = useGraphqlForms({
+  const [payload, isLoading] = useGraphqlForms<{
+    getMarketingPagesDocument: MarketingPages_Document;
+  }>({
     query,
     variables: { relativePath: `about.md` },
   });
-  return <div>My admin page</div>;
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  const payloadData = payload.getMarketingPagesDocument.data!;
+  const pageData = { data: payloadData, content: payloadData._body };
+
+  return <AboutPage {...pageData} />;
 }
