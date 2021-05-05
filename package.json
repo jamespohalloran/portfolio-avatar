@@ -25,6 +25,7 @@
     "snapsvg": "^0.5.1",
     "styled-components": "^5.3.0",
     "tina-graphql-gateway": "^0.2.8",
+    "tina-graphql-gateway-cli": "^0.2.40",
     "tinacms": "^0.40.1",
     "typescript": "3.7.2"
   },

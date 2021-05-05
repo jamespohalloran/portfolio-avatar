@@ -1,0 +1,10 @@
+---
+label: About
+name: about
+fields:
+  - type: text
+    label: Title
+    name: title
+  - type: text
+    label: Contact Button
+    name: contactButton
