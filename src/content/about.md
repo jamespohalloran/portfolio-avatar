@@ -1,6 +1,6 @@
 ---
-title: About 123
-contactButton: Contact Me
+title: About
+contactButton: Contact Me Please
 _template: about
 ---
 
