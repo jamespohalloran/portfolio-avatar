@@ -1,6 +1,7 @@
 ---
 title: "About"
 contactButton: "Contact Me"
+_template: "about"
 ---
 
 Hey! I'm James O'Halloran, a software developer from Prince Edward Island,
