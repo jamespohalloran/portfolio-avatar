@@ -1,0 +1,11 @@
+---
+sections:
+  - label: Marketing Pages
+    name: marketingPages
+    path: src/content
+    templates:
+      - about
+    type: directory
+    create: documents
+    match: '**/*.md'
+    new_doc_ext: md
